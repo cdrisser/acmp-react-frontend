@@ -1,0 +1,48 @@
+
+
+.form-control{
+    max-width: 30rem;
+      display:flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin:0 auto;
+      border: 1px solid grey;
+      box-shadow:10px 10px 5px   grey;
+      padding: 1rem;
+      
+  }
+  .flex-change{
+      display:flex;
+  
+  }
+  
+  label{
+      font-weight:900;
+      margin-right:5rem;
+  }
+  label, input{
+      margin:5% 0;
+      display: block;
+  }
+  .form-control input{
+      margin-bottom:1rem;
+  }
+  .form-control--invalid{
+     color:red;
+     margin:-1% 0;
+  }
+  .form-control-login{
+    max-width: 25rem;
+    width:50%;
+      display:flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      margin:0 auto;
+      border: 1px solid grey;
+      box-shadow:10px 10px 5px   grey;
+      padding: 1rem;
+      overflow: hidden;
+  }

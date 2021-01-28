@@ -1,0 +1,10 @@
+h1{
+    text-align: center;
+}
+.news-item{
+    list-style: none;
+    margin: 5%;
+    padding:2% 15%;
+    background-color: grey;
+
+}

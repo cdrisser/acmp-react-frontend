@@ -1,0 +1,12 @@
+.current-news{
+    width:50%;
+}
+.current-news-header{
+   text-align: center;
+}
+.news-list{
+    background-color: rgb(56, 150, 150);
+    margin:5%;
+    border-radius: 5%;
+    padding:2px;
+}
