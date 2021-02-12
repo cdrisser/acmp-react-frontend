@@ -45,6 +45,7 @@ function App() {
         </Switch>
       );
     }else{
+      console.log(isLoggedIn);
       routes =(
         <Switch>
         <Route path="/" exact>
