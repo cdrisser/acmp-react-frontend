@@ -65,13 +65,7 @@ const UpdateProfile = ()=>{
         }
     },
     true)}, [setFormData, dummyprofile]);
-    // if(dummyprofile.firstname.value !== profileId){
-    //     return(
-    //         <div>
-    //             <h2>Couldnt find place</h2>
-    //         </div>
-    //     );
-    // }
+    
     const updatePlaceHandler = event =>{
         event.preventDefault();
         console.log(formState);

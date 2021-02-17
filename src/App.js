@@ -9,6 +9,7 @@ import UpdateProfile from './profiles/pages/UpdateProfile';
 import Userauth from './user/pages/Userauth'
 import {AuthContext} from './shared/context/auth-context';
 import Repository from './repository/pages/Repository'
+import Allusers from './user/pages/Allusers'
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -24,7 +25,6 @@ function App() {
     if(isLoggedIn){
       routes =(
         <Switch>
-        
         <Route path="/" exact>
             <Dash/>
           </Route>
@@ -40,8 +40,8 @@ function App() {
           <Route path = "/repo">
             <Repository/>
           </Route>
+          
           <Redirect to ="/"/>
-        
         </Switch>
       );
     }else{
@@ -54,6 +54,9 @@ function App() {
           <Route path = "/authenticate">
           <Userauth/>
         </Route>
+        <Route path = "/allusers">
+            <Allusers/>
+          </Route>
         <Redirect to ="/authenticate"/>
         </Switch>
       );
