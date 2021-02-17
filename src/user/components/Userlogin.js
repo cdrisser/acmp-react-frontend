@@ -8,13 +8,13 @@ import {AuthContext} from '../../shared/context/auth-context'
 import ErrorModal from '../../shared/UIElements/ErrorModal';
 import SignupModal from '../../shared/UIElements/SignupModal';
 import Spinner from '../../shared/UIElements/Spinner'
+import {useHttpClient} from '../../shared/hooks/httphook'
 
 const Userlogin = props =>{
     const auth = useContext(AuthContext);
     const[isLoginMode, setIsLoginMode] = useState(true);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState();
     const [showSignup, setShowSignup] = useState(false);
+    const {isLoading, error, sendRequest, clearError} = useHttpClient();
     
     const [formState,inputHandler,setFormData]  = useForm({
         email:{
@@ -58,76 +58,49 @@ const Userlogin = props =>{
     }
     const loginSubmitHandler = async event =>{
         event.preventDefault();
-        setIsLoading(true);
+        
         if(isLoginMode){
             try{
-
-                const response =  await fetch('http://localhost:5000/api/users/login',{
-                method: 'POST',
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                body: JSON.stringify({
+            await sendRequest('http://localhost:5000/api/users/login',
+                'POST', JSON.stringify({
                     email:formState.inputs.email.value,
                     password:formState.inputs.password.value
-                })
-            });
-                const responseData = await response.json();
-                console.log(responseData);
-                if(!response.ok){
-                    throw new Error(responseData.message)
-                }
-                setIsLoading(false)
+                }),
+                {'Content-Type':'application/json'}
+                );
                 auth.login();
-            }catch(error){
-                
-                setIsLoading(false)
-                setError(error.message||"Something went wrong, please try again");
-                
             }
+            catch(error){
+                console.log(error);
+            }
+                
         }
         else{
             try{
-
-                const response =  await fetch('http://localhost:5000/api/users/signup',{
-                method: 'POST',
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                body: JSON.stringify({
+                await sendRequest('http://localhost:5000/api/users/signup',
+                'POST',
+                JSON.stringify({
                     firstname:formState.inputs.firstname.value,
                     lastname:formState.inputs.lastname.value,
                     email:formState.inputs.email.value,
                     password:formState.inputs.password.value
-                })
-            });
-                const responseData = await response.json();
-                console.log(responseData);
-                if(!response.ok){
-                    throw new Error(responseData.message)
-                }
-                setIsLoading(false)
-                setShowSignup(true);
-               
+                }),
+                {'Content-Type':'application/json'}
+            );
+            setShowSignup(true);
             }catch(error){
-                console.log(error);
-                setIsLoading(false)
-                setError(error.message||"Something went wrong, please try again");
                 
             }
         }
     } 
     
-    const errorHandler = ()=>{
-        setError(null);
-    }
     const showSignupHandler = ()=>{
         setShowSignup(false);
     }
     return(
          <React.Fragment>
              {isLoading && <Spinner/>}
-             <ErrorModal error ={error} onClear ={errorHandler}/>
+             <ErrorModal error ={error} onClear ={clearError}/>
              <SignupModal showSignup ={showSignup} onClear ={showSignupHandler}/>
         <div className = "form-control-login  spin">
         {isLoginMode?<h1>Log in</h1>:<h1>Sign up</h1>}
