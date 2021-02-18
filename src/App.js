@@ -12,12 +12,16 @@ import Repository from './repository/pages/Repository'
 import Allusers from './user/pages/Allusers'
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const login = useCallback(()=>{
+  const [userId, setUserId] = useState();
+  
+  const login = useCallback((uid)=>{
     setIsLoggedIn(true)
+    setUserId(uid);
   },[]);
+
   const logout = useCallback(()=>{
     setIsLoggedIn(false)
+    setUserId(null);
   },[]);
 
   let routes;
@@ -41,7 +45,7 @@ function App() {
             <Repository/>
           </Route>
           
-          <Redirect to ="/"/>
+          <Redirect to ="/newprofile"/>
         </Switch>
       );
     }else{
@@ -63,7 +67,7 @@ function App() {
     }
 
   return (
-    <AuthContext.Provider value={{isLoggedIn:isLoggedIn,login:login,logout:logout}}>
+    <AuthContext.Provider value={{isLoggedIn:isLoggedIn, userId: userId ,login:login,logout:logout}}>
     <Router>
       <MainNavigation />
       <main>

@@ -8,6 +8,7 @@ import {useHttpClient} from '../../shared/hooks/httphook'
 const AllUsers = (props)=>{
     const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const [loadedUsers,setLoadedUsers] = useState();
+
     useEffect(()=>{
         const sendAllUserRequest = async ()=>{
         try{
@@ -20,7 +21,7 @@ const AllUsers = (props)=>{
         }
         };
         sendAllUserRequest();
-        },[]);
+        },[sendRequest]);
     
         return(
             <React.Fragment>

@@ -6,8 +6,8 @@ import {useForm} from "../../shared/hooks/formhook"
 import {VALIDATOR_EMAIL, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE} from '../../shared/util/validators';
 import {AuthContext} from '../../shared/context/auth-context'
 import ErrorModal from '../../shared/UIElements/ErrorModal';
-import SignupModal from '../../shared/UIElements/SignupModal';
 import Spinner from '../../shared/UIElements/Spinner'
+import SignupModal from '../../shared/UIElements/SignupModal';
 import {useHttpClient} from '../../shared/hooks/httphook'
 
 const Userlogin = props =>{
@@ -61,14 +61,14 @@ const Userlogin = props =>{
         
         if(isLoginMode){
             try{
-            await sendRequest('http://localhost:5000/api/users/login',
+            const responseData = await sendRequest('http://localhost:5000/api/users/login',
                 'POST', JSON.stringify({
                     email:formState.inputs.email.value,
                     password:formState.inputs.password.value
                 }),
                 {'Content-Type':'application/json'}
                 );
-                auth.login();
+                auth.login(responseData.user.id);
             }
             catch(error){
                 console.log(error);
@@ -77,7 +77,7 @@ const Userlogin = props =>{
         }
         else{
             try{
-                await sendRequest('http://localhost:5000/api/users/signup',
+                const responseData = await sendRequest('http://localhost:5000/api/users/signup',
                 'POST',
                 JSON.stringify({
                     firstname:formState.inputs.firstname.value,
