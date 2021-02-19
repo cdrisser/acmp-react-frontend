@@ -8,12 +8,7 @@ import {VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE, VALIDATOR_U
 import {useForm} from '../../shared/hooks/formhook';
 
 import './UpdateProfile.css'
-
-const dummyprofile ={
-elevator: {value: "asdfffffffffasdfasdf", isValid: true},
-firstname: {value: "Shauna", isValid: true},
-lastname: {value: "RISSER", isValid: true}
-}
+const dummyprofile = [];
 
 const UpdateProfile = ()=>{
     const profileId = useParams().profileId;

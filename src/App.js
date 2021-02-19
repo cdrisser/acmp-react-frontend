@@ -45,7 +45,7 @@ function App() {
             <Repository/>
           </Route>
           
-          <Redirect to ="/newprofile"/>
+          <Redirect to ="/"/>
         </Switch>
       );
     }else{

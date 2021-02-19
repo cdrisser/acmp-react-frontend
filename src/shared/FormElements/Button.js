@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './Button.css';
 
 const Button = props => {
+  console.log(props)
   if (props.href) {
     return (
       <a
@@ -21,7 +22,7 @@ const Button = props => {
         to={props.to}
         exact={props.exact}
         className={`button button--${props.size || 'default'} ${props.inverse &&
-          'button--inverse'} ${props.danger && 'button--danger'}`}
+          'button--inverse'} ${props.danger && 'button--danger'}`} style = {props.styleBut}
       >
         {props.children}
       </Link>

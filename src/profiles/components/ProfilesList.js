@@ -14,7 +14,8 @@ const ProfilesList = (props)=>{
             {props.profiles.map(indprofiles=>(
               <ProfilesInd 
                 key={indprofiles.id}
-                profilename = {indprofiles.profilename}
+                firstname = {indprofiles.firstname}
+                lastname = {indprofiles.lastname}
                 image={indprofiles.image}
                 linkedin = {indprofiles.linkedin}
                 elevator={indprofiles.elevator}

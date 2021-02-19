@@ -1,4 +1,5 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
+import {useHistory} from 'react-router-dom'
 
 import Input from "../../shared/FormElements/Input"
 import '../components/NewProfile.css'
@@ -9,9 +10,13 @@ import {useHttpClient} from '../../shared/hooks/httphook'
 import {AuthContext} from '../../shared/context/auth-context';
 import ErrorModal from '../../shared/UIElements/ErrorModal';
 import Spinner from '../../shared/UIElements/Spinner';
+import NewProfileSuccessModal from '../../shared/UIElements/NewProfileSuccessModal'
+
+
 const NewProfile = (props)=>{
     const auth = useContext(AuthContext);
     const{isLoading, error, sendRequest, clearError } = useHttpClient();
+    const [newProfileSuccess, setNewProfileSuccess]= useState(false);
   const [formState, inputHandler] = useForm({
     firstname:{
         value:'',
@@ -34,12 +39,15 @@ const NewProfile = (props)=>{
         isValid:false
     }
 },
-false)
+false);
+
+const history = useHistory();
     
     
 
     const profileInputHandler = async event =>{
         event.preventDefault();
+        setNewProfileSuccess(true);
         try{
             await sendRequest('http://localhost:5000/api/profiles/',
             'POST', JSON.stringify({
@@ -52,16 +60,23 @@ false)
             }),
                 {'Content-Type':'application/json'}
             )
+            
         }
         catch(error){
 
         }   
     };
 
+    const clearSuccessListener = ()=>{
+        setNewProfileSuccess(false);
+        history.push('/')
+    }
+
     return (
     <React.Fragment>
         {isLoading && <Spinner/>}
         <ErrorModal error={error} onClear ={clearError}/>
+        <NewProfileSuccessModal showSuccess={newProfileSuccess} onClear ={clearSuccessListener}/>
         <form className="form-control " onSubmit={profileInputHandler}>
 
             <Input element="text" id="firstname" label="First Name" errorText ="Please enter a valid first name" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>

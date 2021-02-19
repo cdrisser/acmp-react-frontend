@@ -6,7 +6,8 @@ const ProfileInd = (props)=>{
         <div className = "ind-profile">
             <div className ="leftsideprofile">
                 <img className="profile-pic" src={props.image} alt ={props.profilename} />
-                <div>{props.profilename}</div>
+                <div>{`${props.firstname} ${props.lastname}`}</div>
+                
                 <div><a href ={props.linkedin}>LinkedIn</a></div>
             </div>
             <div className ="rightsideprofile">

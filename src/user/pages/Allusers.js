@@ -15,7 +15,6 @@ const AllUsers = (props)=>{
             const responseData = await sendRequest('http://localhost:5000/api/users/all');
 
             setLoadedUsers(responseData.users);
-            console.log(loadedUsers);
         }
         catch(error){
         }
