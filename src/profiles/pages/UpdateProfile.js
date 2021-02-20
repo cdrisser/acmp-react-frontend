@@ -1,18 +1,25 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import React, {useContext, useEffect, useState} from 'react';
+import {useParams, useHistory} from 'react-router-dom';
 
 import Modal from "../../shared/UIElements/Modal";
 import Input from "../../shared/FormElements/Input";
 import Button from '../../shared/FormElements/Button'
+import ErrorModal from '../../shared/UIElements/ErrorModal';
+import Spinner from '../../shared/UIElements/Spinner'
 import {VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE, VALIDATOR_URL} from '../../shared/util/validators';
 import {useForm} from '../../shared/hooks/formhook';
-
+import { useHttpClient } from "../../shared/hooks/httphook";
+import {AuthContext} from '../../shared/context/auth-context';
 import './UpdateProfile.css'
-const dummyprofile = [];
+
 
 const UpdateProfile = ()=>{
-    const profileId = useParams().profileId;
+  const auth = useContext(AuthContext);
     const [showConfirmModal, setShowConfirmModal] = useState(false);
+    const {isLoading, error, sendRequest, clearError} = useHttpClient();
+    const [loadProfile,setLoadedProfile] = useState();
+    const profileId = useParams().profileId;
+  const history = useHistory();
     const [formState, inputHandler, setFormData] = useForm({
         firstname:{
             value:"",
@@ -26,7 +33,7 @@ const UpdateProfile = ()=>{
             value:"",            
             isValid:false
         },
-        picture:{
+        image:{
             value:"",
             isValid:false
         },
@@ -35,35 +42,72 @@ const UpdateProfile = ()=>{
             isValid:false
         }
     },
-    false)
+    false);
+
     useEffect(()=>{
-    setFormData({
-        firstname:{
-            value:dummyprofile.firstname.value,
-            isValid:true
-        },
-        lastname:{
-            value:dummyprofile.lastname.value,
-            isValid:true
-        },
-        linkedin:{
-            value:'http://www.linkedin.com/in/chrisser',
-            isValid:true
-        },
-        picture:{
-            value:'',
-            isValid:true
-        },
-        elevator:{
-            value:'testsetestttttttttttttttttttttt',
-            isValid:true
+      const fetchProfile = async ()=>{
+        try{
+          const responseData = await sendRequest(
+            `http://localhost:5000/api/profiles/${auth.userId}`);
+            setLoadedProfile(responseData.profile);
+        
+            setFormData({
+              firstname:{
+                  value:responseData.profile.firstname,
+                  isValid:true
+              },
+              lastname:{
+                  value:responseData.profile.lastname,
+                  isValid:true
+              },
+              linkedin:{
+                  value:responseData.profile.linkedin,
+                  isValid:true
+              },
+              image:{
+                  value:'',
+                  isValid:true
+              },
+              elevator:{
+                  value:responseData.profile.elevator,
+                  isValid:true
+              }
+          },
+          true)
+
         }
-    },
-    true)}, [setFormData, dummyprofile]);
+        catch(error){
+          console.log(error);
+        }
+      }
+      fetchProfile();
+    },[sendRequest, profileId, setFormData])
+
+   
     
-    const updatePlaceHandler = event =>{
+    const updatePlaceHandler = async event =>{
         event.preventDefault();
-        console.log(formState);
+        console.log(auth.userId);
+      try{
+        const response = await sendRequest(`http://localhost:5000/api/profiles/${auth.userId}`,
+        'PATCH',
+        JSON.stringify({
+          firstname: formState.inputs.firstname.value,
+          lastname: formState.inputs.lastname.value,
+          image: "",
+          linkedin: formState.inputs.linkedin.value,
+          elevator: formState.inputs.elevator.value
+        }),
+        {
+          'Content-Type':'application/json'
+        }
+        );
+        console.log(response)
+        history.push('/profiles')
+      }
+      catch(error){
+
+      }
     }
     const showDeleteWarningHandler = () => {
         setShowConfirmModal(true);
@@ -77,6 +121,21 @@ const UpdateProfile = ()=>{
         setShowConfirmModal(false);
         console.log('DELETING...');
       };
+
+      if(isLoading){
+        return(
+          <div className = "center">
+                <Spinner/>
+          </div>
+        )
+      }
+
+      if(!loadProfile && !error){
+        return(
+          <h2 style = {{textAlign:'center'}}>No Profile found</h2> 
+        )
+      }
+      
       
     return (
     <React.Fragment>
@@ -100,15 +159,16 @@ const UpdateProfile = ()=>{
         <Button danger onClick={showDeleteWarningHandler} styleBut = {{position:"fixed", top:"5rem", right:"1rem"}}>
               DELETE
             </Button>
-        {formState.inputs.firstname.value &&
+            <ErrorModal error={error} onClear={clearError}/>
+        {!isLoading && loadProfile &&(
             <form className="form-control" onSubmit={updatePlaceHandler}>
-                <Input element="text" id="firstname" label="First Name" errorText ="Please enter a valid first name" value = {formState.inputs.firstname.value} valid = {formState.inputs.firstname.isValid} onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
-                <Input element="text" id="lastname" label="Last Name" errorText="Please enter a valid last name" onInput={inputHandler} value = {formState.inputs.lastname.value} valid = {formState.inputs.lastname.isValid}  validators={[VALIDATOR_MINLENGTH(2)]}/>
-                <Input element="text" type ="url" id="linkedin" label="LinkedIn URL" errorText="Please enter your linkedin URL" onInput={inputHandler} value = {formState.inputs.linkedin.value} valid = {formState.inputs.linkedin.isValid}   validators={[VALIDATOR_URL()]}/>
-                <Input element="text" type ="file" id="picture" label="Upload a picture" errorText="Please submit a picture" onInput={inputHandler} value ={formState.inputs.picture.value}  valid = {formState.inputs.picture.isValid}  validators={[VALIDATOR_REQUIRE()]}/>
-                <Input element="textarea" id="elevator" label="Elevator speech" errorText="Please tell us about you!" rows="10" cols="50" onInput={inputHandler} value = {formState.inputs.elevator.value} valid = {formState.inputs.elevator.isValid}   validators={[VALIDATOR_MINLENGTH(10), VALIDATOR_MAXLENGTH(500)]}/>
-                <input type = "submit" disabled = {!formState.isValid}></input>
-            </form>}
+                <Input element="text" id="firstname" label="First Name" errorText ="Please enter a valid first name" value = {loadProfile.firstname} valid = {true} onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
+                <Input element="text" id="lastname" label="Last Name" errorText="Please enter a valid last name" onInput={inputHandler} value = {loadProfile.lastname} valid = {true} validators={[VALIDATOR_MINLENGTH(2)]}/>
+                <Input element="text" type ="url" id="linkedin" label="LinkedIn URL" errorText="Please enter your linkedin URL" onInput={inputHandler} value = {loadProfile.linkedin} valid = {true}  validators={[VALIDATOR_URL()]}/>
+                <Input element="text" type ="file" id="image" label="Upload a image" errorText="Please submit a image" onInput={inputHandler} value =''  valid = {true}  validators={[VALIDATOR_REQUIRE()]}/>
+                <Input element="textarea" id="elevator" label="Elevator speech" errorText="Please tell us about you!" rows="10" cols="50" onInput={inputHandler} value = {loadProfile.elevator} valid = {true}  validators={[VALIDATOR_MINLENGTH(10), VALIDATOR_MAXLENGTH(500)]}/>
+                <Button type = "submit" disabled = {!formState.isValid}>Update Profile</Button>
+            </form>)}
     </React.Fragment>
         );
 };

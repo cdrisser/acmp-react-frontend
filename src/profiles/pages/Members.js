@@ -35,8 +35,8 @@ const Profiles = ()=>{
             </div>
         )}
         <h1>Member Profiles</h1> 
-        <Button styleBut = {{position:"fixed", top:"5rem", right:"1rem"}} to ="/newprofile">New Profile</Button>
-        <Button styleBut = {{position:"fixed", top:"5rem", right:"1rem"}} to ="/updateprofile" inverse>Update Profile</Button>
+        <Button styleBut = {{position:"fixed", top:"5rem", right:"1rem"}} to ="/newprofile" inverse>New Profile</Button>
+        <Button styleBut = {{position:"fixed", top:"8rem", right:"1rem"}} to ="/updateprofile" inverse>Update Profile</Button>
         {!isLoading && loadedProfiles &&<ProfilesList profiles ={loadedProfiles}/>}
     </React.Fragment>
         
