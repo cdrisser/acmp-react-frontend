@@ -117,9 +117,15 @@ const UpdateProfile = ()=>{
         setShowConfirmModal(false);
       };
     
-      const confirmDeleteHandler = () => {
+      const confirmDeleteHandler = async () => {
         setShowConfirmModal(false);
-        console.log('DELETING...');
+        try{
+        await sendRequest(`http://localhost:5000/api/profiles/${loadProfile.id}`,'DELETE');
+        history.push('/profiles')
+        }
+        catch(error){
+
+        }
       };
 
       if(isLoading){
