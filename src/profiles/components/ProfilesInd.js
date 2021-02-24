@@ -5,7 +5,7 @@ const ProfileInd = (props)=>{
     return(
         <div className = "ind-profile">
             <div className ="leftsideprofile">
-                <img className="profile-pic" src={props.image} alt ={props.profilename} />
+                <img className="profile-pic" src={`http://localhost:5000/${props.image}`} alt ={props.profilename} />
                 <div>{`${props.firstname} ${props.lastname}`}</div>
                 
                 <div><a href ={props.linkedin}>LinkedIn</a></div>

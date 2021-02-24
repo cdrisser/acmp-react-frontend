@@ -31,7 +31,7 @@ const NewProfile = (props)=>{
         value:'',
         isValid:false
     },
-    picture:{
+    image:{
         value:'',
         isValid:false
     },
@@ -48,18 +48,18 @@ const history = useHistory();
 
     const profileInputHandler = async event =>{
         event.preventDefault();
+        const formData = new FormData();
+        formData.append("firstname",formState.inputs.firstname.value)
+            formData.append("lastname",formState.inputs.lastname.value)
+            formData.append("image",formState.inputs.image.value)
+            formData.append("linkedin",formState.inputs.linkedin.value)
+            formData.append("elevator",formState.inputs.elevator.value)
+            formData.append("profileCreator",auth.userId)
         console.log(formState.inputs)
         try{
             await sendRequest('http://localhost:5000/api/profiles/',
-            'POST', JSON.stringify({
-                firstname:formState.inputs.firstname.value,
-                lastname:formState.inputs.lastname.value,
-                image:"test",
-                linkedin:formState.inputs.linkedin.value,
-                elevator:formState.inputs.elevator.value,
-                profileCreator:auth.userId
-            }),
-                {'Content-Type':'application/json'}
+            'POST', 
+            formData
             )
             setNewProfileSuccess(true);
         }
@@ -83,7 +83,7 @@ const history = useHistory();
             <Input element="text" id="firstname" label="First Name" errorText ="Please enter a valid first name" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
             <Input element="text" id="lastname" label="Last Name" errorText="Please enter a valid last name" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
             <Input element="text" type ="url" id="linkedin" label="LinkedIn URL" errorText="Please enter your linkedin URL" onInput={inputHandler} validators={[VALIDATOR_URL()]}/>
-            <ImageUpload id ="picture" onInput={inputHandler}/>
+            <ImageUpload id ="image" onInput={inputHandler}/>
             <Input element="textarea" id="elevator" label="Elevator speech" errorText="Please tell us about you!" rows="10" cols="50" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(10), VALIDATOR_MAXLENGTH(500)]}/>
             <Button type = "submit" disabled = {!formState.isValid}/>
         </form>
