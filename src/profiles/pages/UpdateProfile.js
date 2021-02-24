@@ -10,6 +10,7 @@ import {VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE, VALIDATOR_U
 import {useForm} from '../../shared/hooks/formhook';
 import { useHttpClient } from "../../shared/hooks/httphook";
 import {AuthContext} from '../../shared/context/auth-context';
+import ImageUpload from '../../shared/FormElements/ImageUpload'
 import './UpdateProfile.css'
 
 
@@ -65,7 +66,7 @@ const UpdateProfile = ()=>{
                   isValid:true
               },
               image:{
-                  value:'',
+                  value:responseData.profile.image,
                   isValid:true
               },
               elevator:{
@@ -87,22 +88,21 @@ const UpdateProfile = ()=>{
     
     const updatePlaceHandler = async event =>{
         event.preventDefault();
-        console.log(auth.userId);
+        console.log(formState.inputs);
       try{
-        const response = await sendRequest(`http://localhost:5000/api/profiles/${auth.userId}`,
+            const formData = new FormData();
+            formData.append("firstname",formState.inputs.firstname.value)
+            formData.append("lastname",formState.inputs.lastname.value)
+            formData.append("image",formState.inputs.image.value)
+            formData.append("linkedin",formState.inputs.linkedin.value)
+            formData.append("elevator",formState.inputs.elevator.value)
+            formData.append("profileCreator",auth.userId)
+            
+        await sendRequest(`http://localhost:5000/api/profiles/${auth.userId}`,
         'PATCH',
-        JSON.stringify({
-          firstname: formState.inputs.firstname.value,
-          lastname: formState.inputs.lastname.value,
-          image: "",
-          linkedin: formState.inputs.linkedin.value,
-          elevator: formState.inputs.elevator.value
-        }),
-        {
-          'Content-Type':'application/json'
-        }
+        formData
         );
-        console.log(response)
+        
         history.push('/profiles')
       }
       catch(error){
@@ -171,8 +171,8 @@ const UpdateProfile = ()=>{
                 <Input element="text" id="firstname" label="First Name" errorText ="Please enter a valid first name" value = {loadProfile.firstname} valid = {true} onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
                 <Input element="text" id="lastname" label="Last Name" errorText="Please enter a valid last name" onInput={inputHandler} value = {loadProfile.lastname} valid = {true} validators={[VALIDATOR_MINLENGTH(2)]}/>
                 <Input element="text" type ="url" id="linkedin" label="LinkedIn URL" errorText="Please enter your linkedin URL" onInput={inputHandler} value = {loadProfile.linkedin} valid = {true}  validators={[VALIDATOR_URL()]}/>
-                <Input element="text" type ="file" id="image" label="Upload a image" errorText="Please submit a image" onInput={inputHandler} value =''  valid = {true}  validators={[VALIDATOR_REQUIRE()]}/>
-                <Input element="textarea" id="elevator" label="Elevator speech" errorText="Please tell us about you!" rows="10" cols="50" onInput={inputHandler} value = {loadProfile.elevator} valid = {true}  validators={[VALIDATOR_MINLENGTH(10), VALIDATOR_MAXLENGTH(500)]}/>
+                <ImageUpload id ="image" updateimageUrl ={loadProfile.image} onInput={inputHandler}/>
+                <Input element="textarea" id="elevator" label="Elevator speech" errorText="Please tell us about you!" rows="10" cols="50" onInput={inputHandler} value = {loadProfile.elevator} valid = {true} validators={[VALIDATOR_MINLENGTH(10), VALIDATOR_MAXLENGTH(500)]}/>
                 <Button type = "submit" disabled = {!formState.isValid}>Update Profile</Button>
             </form>)}
     </React.Fragment>

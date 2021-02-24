@@ -56,8 +56,9 @@ const pickedImage = (event)=>{
            /> 
             <div className={`${props.center && 'center'}`}>
                 <div>
+                    {!previewUrl && props.updateimageUrl && <img src = {`http://localhost:5000/${props.updateimageUrl}`} alt="Preview"/>}
                     {previewUrl && <img src = {previewUrl} alt="Preview"/>}
-                    {!previewUrl && <p>Please pick an image!</p>}
+                    {!previewUrl && !props.updateimageUrl && <p>Please pick an image!</p>}
                 </div>
                 <Button type="button" onClick={pickImageHandler}>PICK IMAGE</Button>
             </div>

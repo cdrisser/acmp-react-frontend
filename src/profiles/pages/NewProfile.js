@@ -48,6 +48,7 @@ const history = useHistory();
 
     const profileInputHandler = async event =>{
         event.preventDefault();
+        
         const formData = new FormData();
         formData.append("firstname",formState.inputs.firstname.value)
             formData.append("lastname",formState.inputs.lastname.value)
@@ -55,7 +56,7 @@ const history = useHistory();
             formData.append("linkedin",formState.inputs.linkedin.value)
             formData.append("elevator",formState.inputs.elevator.value)
             formData.append("profileCreator",auth.userId)
-        console.log(formState.inputs)
+        
         try{
             await sendRequest('http://localhost:5000/api/profiles/',
             'POST', 
