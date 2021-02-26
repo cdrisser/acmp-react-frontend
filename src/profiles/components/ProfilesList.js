@@ -4,7 +4,7 @@ const ProfilesList = (props)=>{
     console.log(props.profiles)
     if(props.profiles.length === 0){
         return(
-            <div>
+            <div className = "center">
                 <p>There aren't any profiles.  Be the first to add one!</p>
             </div>
         );

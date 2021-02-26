@@ -100,7 +100,8 @@ const UpdateProfile = ()=>{
             
         await sendRequest(`http://localhost:5000/api/profiles/${auth.userId}`,
         'PATCH',
-        formData
+        formData,
+        {Authorization: "Bearer " + auth.token}
         );
         
         history.push('/profiles')
@@ -120,8 +121,11 @@ const UpdateProfile = ()=>{
       const confirmDeleteHandler = async () => {
         setShowConfirmModal(false);
         try{
-        await sendRequest(`http://localhost:5000/api/profiles/${loadProfile.id}`,'DELETE');
-        history.push('/profiles')
+          await sendRequest(`http://localhost:5000/api/profiles/${loadProfile.id}`,
+            'DELETE',
+            null,
+            {Authorization: "Bearer " + auth.token});
+            history.push('/profiles')
         }
         catch(error){
 

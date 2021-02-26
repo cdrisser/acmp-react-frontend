@@ -55,12 +55,12 @@ const history = useHistory();
             formData.append("image",formState.inputs.image.value)
             formData.append("linkedin",formState.inputs.linkedin.value)
             formData.append("elevator",formState.inputs.elevator.value)
-            formData.append("profileCreator",auth.userId)
         
         try{
             await sendRequest('http://localhost:5000/api/profiles/',
             'POST', 
-            formData
+            formData,
+            {Authorization: "Bearer " + auth.token}
             )
             setNewProfileSuccess(true);
         }
