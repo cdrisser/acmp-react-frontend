@@ -1,7 +1,6 @@
 import React from 'react';
 import ProfilesInd from './ProfilesInd';
 const ProfilesList = (props)=>{
-    console.log(props.profiles)
     if(props.profiles.length === 0){
         return(
             <div className = "center">

@@ -1,7 +1,6 @@
 import React from 'react';
 import "./ProfilesInd.css";
 const ProfileInd = (props)=>{
-    console.log(props.profilename);
     return(
         <div className = "ind-profile">
             <div className ="leftsideprofile">
