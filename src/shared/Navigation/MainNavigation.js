@@ -22,7 +22,7 @@ const MainNavigation = (props)=>{
             {sideDrawerState && <Backdrop onClick={closeDrawerHandler}/>}
             <SideDrawer show={sideDrawerState} onClick={closeDrawerHandler}>
                         <nav className="main-navigation_sidedrawer_nav">
-                            <NavLink/>
+                            <NavLink />
                         </nav>
                 </SideDrawer>
             <MainHeader>
@@ -35,7 +35,7 @@ const MainNavigation = (props)=>{
                     <Link to="/memberdashboard">MemberDash</Link>
                 </h1>
                 <nav className = "main-navigation__header">
-                    <NavLink />
+                    <NavLink  />
                 </nav>
             </MainHeader>
         </React.Fragment>

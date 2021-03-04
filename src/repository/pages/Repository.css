@@ -1,0 +1,12 @@
+.repo-container{
+    display:flex;
+    justify-content: center;
+}
+.specific-repo-container{
+margin:1rem;
+padding:1rem;
+background-color: rgb(185, 184, 184);
+}
+h2{
+    text-align: center;
+}

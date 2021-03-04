@@ -11,32 +11,63 @@ import {AuthContext} from './shared/context/auth-context';
 import Repository from './repository/pages/Repository'
 import Allusers from './user/pages/Allusers'
 import {useAuth} from './shared/hooks/auth-hook'
+import UpdateRepo from './admindashboard/pages/UpdateRepo';
+
 function App() {
-  const {token, login, logout, userId} = useAuth();
+  const {token, login, logout, userId,admin} = useAuth();
   let routes;
-  
+  console.log(admin)
     if(token){
-      routes =(
-        <Switch>
-        <Route path="/" exact>
-            <Dash/>
-          </Route>
-        <Route path="/profiles" exact>
-            <Profiles />
-          </Route>
-          <Route path="/newprofile">
-            <NewProfile/>
-          </Route>
-          <Route path = "/updateprofile">
-            <UpdateProfile/>
-          </Route>
-          <Route path = "/repo">
-            <Repository/>
-          </Route>
-          
-          <Redirect to ="/"/>
-        </Switch>
-      );
+      
+      if(admin){
+    
+        routes =(
+          <Switch>
+            <Route path="/" exact>
+                <Dash/>
+              </Route>
+            <Route path="/profiles" exact>
+                <Profiles />
+              </Route>
+              <Route path="/newprofile">
+                <NewProfile/>
+              </Route>
+              <Route path = "/updateprofile">
+                <UpdateProfile/>
+              </Route>
+              <Route path = "/repo">
+                <Repository/>
+              </Route>
+              <Route path = "/admin/updaterepo">
+                <UpdateRepo/>
+              </Route>
+              <Redirect to ="/"/>
+          </Switch>
+        );
+      }
+      else{
+       
+        routes =(
+          <Switch>
+            <Route path="/" exact>
+                <Dash/>
+              </Route>
+            <Route path="/profiles" exact>
+                <Profiles />
+              </Route>
+              <Route path="/newprofile">
+                <NewProfile/>
+              </Route>
+              <Route path = "/updateprofile">
+                <UpdateProfile/>
+              </Route>
+              <Route path = "/repo">
+                <Repository/>
+              </Route>
+              <Redirect to ="/"/>
+          </Switch>
+        );
+      }
     }else{
 
       routes =(
@@ -47,16 +78,13 @@ function App() {
           <Route path = "/authenticate">
           <Userauth/>
         </Route>
-        <Route path = "/allusers">
-            <Allusers/>
-          </Route>
         <Redirect to ="/authenticate"/>
         </Switch>
       );
     }
 
   return (
-    <AuthContext.Provider value={{isLoggedIn:!!token, token:token, userId: userId ,login:login,logout:logout}}>
+    <AuthContext.Provider value={{isLoggedIn:!!token,admin:!!admin, token:token, userId: userId ,login:login,logout:logout}}>
     <Router>
       <MainNavigation />
       <main>

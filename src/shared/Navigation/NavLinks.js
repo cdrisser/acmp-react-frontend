@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom';
 import {AuthContext} from '../../shared/context/auth-context'
 import './NavLink.css';
 
-const NavLinks = ()=>{
+const NavLinks = (props)=>{
     const auth = useContext(AuthContext);
 return <ul className = "nav-links">
             <li>
@@ -21,6 +21,9 @@ return <ul className = "nav-links">
             {!auth.isLoggedIn &&
             <li>
                 <NavLink to ="/authenticate">AUTHENTICATE</NavLink>
+            </li>}
+            {auth.admin && <li>
+            <NavLink to ="/admin/updaterepo">ADMIN</NavLink>
             </li>}
             {auth.isLoggedIn &&
             <li>

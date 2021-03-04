@@ -3,11 +3,12 @@ import React from 'react';
 import './RepoItem.css';
 
 const RepoItem = (props)=>{
-    return(<div className="repo-container">
+    console.log(props)
+    return(<div className="repo-container-ind">
             <div className = "info-container">
                 <div>{props.repotitle}</div>
                 <div>{props.repodescription}</div>
-                <div>{`http://localhost:5000/${props.downloadlink}`}</div>
+                <div>{`http://localhost:5000/${props.file}`}</div>
             </div>
         </div>
         )

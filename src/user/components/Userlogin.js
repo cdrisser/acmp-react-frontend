@@ -10,7 +10,7 @@ import Spinner from '../../shared/UIElements/Spinner'
 import SignupModal from '../../shared/UIElements/SignupModal';
 import {useHttpClient} from '../../shared/hooks/httphook'
 
-const Userlogin = props =>{
+const Userlogin = () =>{
     const auth = useContext(AuthContext);
     const[isLoginMode, setIsLoginMode] = useState(true);
     const [showSignup, setShowSignup] = useState(false);
@@ -68,8 +68,10 @@ const Userlogin = props =>{
                 }),
                 {'Content-Type':'application/json'}
                 );
-                auth.login(responseData.userId, responseData.token)
+                auth.login(responseData.userId, responseData.token, responseData.isAdmin)
+                
             }
+            
             catch(error){
                 console.log(error);
             }

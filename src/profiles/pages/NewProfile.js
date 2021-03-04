@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 
 import Input from "../../shared/FormElements/Input"
 import '../components/NewProfile.css'
-import {VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE, VALIDATOR_URL} from '../../shared/util/validators';
+import {VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_URL} from '../../shared/util/validators';
 import {useForm} from '../../shared/hooks/formhook'
 import Button from '../../shared/FormElements/Button';
 import ImageUpload from '../../shared/FormElements/ImageUpload'

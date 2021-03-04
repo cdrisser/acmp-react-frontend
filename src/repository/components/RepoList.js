@@ -1,7 +1,8 @@
 import React from 'react';
 import RepoItem from './RepoItem'
 const RepoList = props =>{
-    if(props.repo.length==0){
+    console.log(props.repo);
+    if(props.repo.length===0){
         return(
             <h2>There are no current items in this repository. </h2>
         )
@@ -9,14 +10,14 @@ const RepoList = props =>{
     else{
         return(
             <div>
-                {props.repo.map((repoitem)=>{
+                {props.repo.map((repoitem)=>(
                     <RepoItem
                         key={repoitem.id}
-                        repotitle = {repoitem.title}
-                        repodescription = {repoitem.description}
-                        downloadlink={repoitem.downloadlink}
+                        repotitle = {repoitem.repotitle}
+                        repodescription = {repoitem.repodescription}
+                        file={repoitem.file}
                     />
-                }
+                )
 
                 )}
             </div>
