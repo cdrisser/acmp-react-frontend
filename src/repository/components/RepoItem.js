@@ -1,14 +1,37 @@
-import React from 'react';
+import React,{useContext,useState} from 'react';
 
+import Button from '../../shared/FormElements/Button'
+
+import {AuthContext} from '../../shared/context/auth-context';
 import './RepoItem.css';
 
 const RepoItem = (props)=>{
-    console.log(props)
+    const auth = useContext(AuthContext);
+
+    const handleClick = (event)=>{
+        
+        
+        props.delete(event.target.value);
+    }
+    
+
+    if(auth.admin){
+        return(
+            <React.Fragment>
+                <div>Title: {props.repotitle}</div>
+                <div>ID: {props.id}</div>
+                <Button onClick ={()=>props.delete(props.id)} id={props.id}>Delete</Button>
+            </React.Fragment>
+        )
+    }
+    
+
     return(<div className="repo-container-ind">
             <div className = "info-container">
                 <div>{props.repotitle}</div>
                 <div>{props.repodescription}</div>
-                <div>{`http://localhost:5000/${props.file}`}</div>
+                <div><a href= {`http://localhost:5000/${props.file}`} ><img style={{width:"100px",height:"100px"}} src = {`http://localhost:5000/${props.file}`}/></a></div>
+    
             </div>
         </div>
         )

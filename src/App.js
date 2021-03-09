@@ -9,18 +9,15 @@ import UpdateProfile from './profiles/pages/UpdateProfile';
 import Userauth from './user/pages/Userauth'
 import {AuthContext} from './shared/context/auth-context';
 import Repository from './repository/pages/Repository'
-import Allusers from './user/pages/Allusers'
+
 import {useAuth} from './shared/hooks/auth-hook'
-import UpdateRepo from './admindashboard/pages/UpdateRepo';
+import RepoUpdateContainer from './admindashboard/pages/RepoUpdateContainer';
 
 function App() {
-  const {token, login, logout, userId,admin} = useAuth();
+  const {token, login, logout, userId,admin, username} = useAuth();
   let routes;
-  console.log(admin)
     if(token){
-      
       if(admin){
-    
         routes =(
           <Switch>
             <Route path="/" exact>
@@ -39,7 +36,7 @@ function App() {
                 <Repository/>
               </Route>
               <Route path = "/admin/updaterepo">
-                <UpdateRepo/>
+                <RepoUpdateContainer/>
               </Route>
               <Redirect to ="/"/>
           </Switch>
@@ -84,7 +81,7 @@ function App() {
     }
 
   return (
-    <AuthContext.Provider value={{isLoggedIn:!!token,admin:!!admin, token:token, userId: userId ,login:login,logout:logout}}>
+    <AuthContext.Provider value={{isLoggedIn:!!token,admin:!!admin, token:token, userId: userId, username:username ,login:login,logout:logout}}>
     <Router>
       <MainNavigation />
       <main>

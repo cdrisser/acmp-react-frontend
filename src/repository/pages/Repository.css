@@ -1,6 +1,7 @@
 .repo-container{
     display:flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .specific-repo-container{
 margin:1rem;

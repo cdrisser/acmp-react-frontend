@@ -1,0 +1,32 @@
+.repo {
+    z-index: 100;
+    position: fixed;
+    top: 22vh;
+    left: 10%;
+    width: 100%;
+    background: white;
+    box-shadow: 0 2px 8px #00000042;
+    border-radius: 8px;
+    
+  }
+  .repo-enter {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  
+  .repo-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 200ms;
+  }
+  
+  .repo-exit {
+    transform: translateX(0%);
+  opacity: 1;
+  }
+  
+  .repo-exit-active {
+    transform: translateX(-100%);
+  opacity: 0;
+  transition: all 200ms;
+  }

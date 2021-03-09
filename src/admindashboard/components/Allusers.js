@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-import User from "../components/User";
+import User from "../../user/components/User";
 import ErrorModal from "../../shared/UIElements/ErrorModal";
 import Spinner from "../../shared/UIElements/Spinner"
 import {useHttpClient} from '../../shared/hooks/httphook'

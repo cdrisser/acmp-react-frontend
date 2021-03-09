@@ -1,16 +1,16 @@
 import React from 'react'
-import Modal from '../UIElements/Modal';
+import Modal from './Modal';
 import Button from '../FormElements/Button'
 
-const NewProfileSuccessModal = props=>{
+const SuccessModal = props=>{
  return(
     <Modal 
     onCancel ={props.onClear}
-        header = "New Profile Successfully Created"
+        header = {props.header}
         show = {props.showSuccess}
         footer={<Button onClick={props.onClear}>Okay</Button>}>
-        <p>Your profile has successfully been created!</p>
+        <p>{props.message}</p>
     </Modal>
  )
 };
-export default NewProfileSuccessModal;
+export default SuccessModal;

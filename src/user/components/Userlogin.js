@@ -68,7 +68,7 @@ const Userlogin = () =>{
                 }),
                 {'Content-Type':'application/json'}
                 );
-                auth.login(responseData.userId, responseData.token, responseData.isAdmin)
+                auth.login(responseData.userId, responseData.name, responseData.token, responseData.isAdmin)
                 
             }
             

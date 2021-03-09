@@ -54,9 +54,7 @@ const pickedFile = (event)=>{
            onChange={pickedFile}
            /> 
             <div className={`${props.center && 'center'}`}>
-               <div>
-               {!previewUrl && <p>Please choose a file</p>}
-               </div>
+
                <Button type="button" onClick={pickFileHandler}>Choose File</Button>
             </div>
             {!isValid && <p>{props.errorText}</p>}

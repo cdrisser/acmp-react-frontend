@@ -11,7 +11,7 @@ import {useHttpClient} from '../../shared/hooks/httphook'
 import {AuthContext} from '../../shared/context/auth-context';
 import ErrorModal from '../../shared/UIElements/ErrorModal';
 import Spinner from '../../shared/UIElements/Spinner';
-import NewProfileSuccessModal from '../../shared/UIElements/NewProfileSuccessModal'
+import SuccessModal from '../../shared/UIElements/SuccessModal'
 
 
 const NewProfile = (props)=>{
@@ -78,7 +78,7 @@ const history = useHistory();
     <React.Fragment>
         {isLoading && <Spinner/>}
         <ErrorModal error={error} onClear ={clearError}/>
-        < NewProfileSuccessModal showSuccess={newProfileSuccess} onClear ={clearSuccessListener}/>
+        < SuccessModal showSuccess={newProfileSuccess} onClear ={clearSuccessListener} header='Success' message='Successfully created profile!'/>
         <form className="form-control " onSubmit={profileInputHandler}>
 
             <Input element="text" id="firstname" label="First Name" errorText ="Please enter a valid first name" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>

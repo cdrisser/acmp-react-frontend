@@ -13,9 +13,11 @@ const RepoList = props =>{
                 {props.repo.map((repoitem)=>(
                     <RepoItem
                         key={repoitem.id}
+                        id={repoitem.id}
                         repotitle = {repoitem.repotitle}
                         repodescription = {repoitem.repodescription}
                         file={repoitem.file}
+                        delete = {props.delete}
                     />
                 )
 
