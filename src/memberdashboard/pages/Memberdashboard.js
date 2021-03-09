@@ -1,30 +1,52 @@
-import React,{useContext} from 'react';
-
+import React,{useContext, useEffect, useState} from 'react';
 import NewsList from '../components/LatestNewsList';
 import UserLogin from '../../user/components/Userlogin'
-import './Memberdashboard.css'
-import {AuthContext} from '../../shared/context/auth-context';
 
+import {AuthContext} from '../../shared/context/auth-context';
+import {useHttpClient} from '../../shared/hooks/httphook'
+import ErrorModal from '../../shared/UIElements/ErrorModal';
+import Spinner from '../../shared/UIElements/Spinner';
+import './Memberdashboard.css'
 
 const Dash = ()=>{
 const auth = useContext(AuthContext);
-console.log(auth.username)
-    const NEWS = [{ id:'1', header: "yada yada yada", body:"yada yada yada"},
-                  { id:'2', header: "yo yo yo ", body:"yo yo yo"}]
+const{isLoading, error, sendRequest, clearError } = useHttpClient();
+const [loadedNews, setLoadedNews] = useState();
+
+    useEffect(()=>{
+        const sendNewsRequest = async ()=>{
+            try{
+                const responseData = await sendRequest('http://localhost:5000/api/news/');
+                setLoadedNews(responseData.news);
+            }
+            catch(error){
+
+            }
+        };
+        sendNewsRequest();
+    },[sendRequest])
 
 return (
     <React.Fragment>
+        <ErrorModal error={error} onClear={clearError}/>
+        {isLoading && (
+            <div className = "center">
+                <Spinner/>
+            </div>
+        )}
+       {!isLoading && loadedNews && <div>
         {!auth.isLoggedIn ? 
         <div className="dashboard-container">
-            <NewsList items = {NEWS} /><UserLogin/></div>:
+            <NewsList items = {loadedNews} /><UserLogin/></div>:
             
           <div className="flex-column">
                     <h1 >HELLO!</h1>
                     <span>Welcome back, {auth.username}!</span>
-                    <NewsList items = {NEWS} />
+                    <NewsList items = {loadedNews} />
                 </div>
+
         }
-        
+        </div>}
     </React.Fragment>
 );
 };

@@ -7,12 +7,6 @@ import './RepoItem.css';
 
 const RepoItem = (props)=>{
     const auth = useContext(AuthContext);
-
-    const handleClick = (event)=>{
-        
-        
-        props.delete(event.target.value);
-    }
     
 
     if(auth.admin){

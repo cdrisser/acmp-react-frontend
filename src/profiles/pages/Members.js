@@ -26,7 +26,6 @@ const Profiles = ()=>{
             
         }
         catch(error){
-
         }
     };
     sendAllProfileRequest();

@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 
 import UpdateRepo from './UpdateRepo';
 import Button from '../../shared/FormElements/Button'
-import UpdateProfile from '../../profiles/pages/UpdateProfile';
 import UpdateNews from './UpdateNews';
 import { CSSTransition } from 'react-transition-group';
 import './RepoUpdateContainer.css';

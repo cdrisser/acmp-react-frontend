@@ -14,7 +14,7 @@ const NewsList = props =>{
         <h2 className= "current-news-header">Current News</h2>
         <ul className="news-list">
             {props.items.map(latest =>{
-                return <LatestNewsItem key ={latest.id} header = {latest.header} body = {latest.body} />
+                return <LatestNewsItem key ={latest.id} header = {latest.headline} body = {latest.body} date = {latest.date}/>
             })}
         </ul>
     </div>
