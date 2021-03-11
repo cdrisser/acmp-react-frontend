@@ -1,14 +1,14 @@
 import React,{useContext, useEffect, useState} from 'react';
-import NewsList from '../components/LatestNewsList';
+import LatestNewsList from '../components/LatestNewsList';
 import UserLogin from '../../user/components/Userlogin'
-
 import {AuthContext} from '../../shared/context/auth-context';
 import {useHttpClient} from '../../shared/hooks/httphook'
 import ErrorModal from '../../shared/UIElements/ErrorModal';
 import Spinner from '../../shared/UIElements/Spinner';
-import './Memberdashboard.css'
+import './MemberDashboard.css'
 
-const Dash = ()=>{
+const MemberDashboard= (props)=>{
+    
 const auth = useContext(AuthContext);
 const{isLoading, error, sendRequest, clearError } = useHttpClient();
 const [loadedNews, setLoadedNews] = useState();
@@ -26,6 +26,23 @@ const [loadedNews, setLoadedNews] = useState();
         sendNewsRequest();
     },[sendRequest])
 
+    if(props.admindisplay){
+        console.log(props)
+        return(
+            <React.Fragment>
+        <ErrorModal error={error} onClear={clearError}/>
+        {isLoading && (
+            <div className = "center">
+                <Spinner/>
+            </div>
+        )}
+        {!isLoading && loadedNews && 
+        <div className="dashboard-container">
+            <LatestNewsList items = {loadedNews} delete ={props.delete} /></div>}
+        </React.Fragment>
+        )
+    }
+
 return (
     <React.Fragment>
         <ErrorModal error={error} onClear={clearError}/>
@@ -34,15 +51,16 @@ return (
                 <Spinner/>
             </div>
         )}
+
        {!isLoading && loadedNews && <div>
         {!auth.isLoggedIn ? 
         <div className="dashboard-container">
-            <NewsList items = {loadedNews} /><UserLogin/></div>:
+            <LatestNewsList items = {loadedNews} /><UserLogin/></div>:
             
           <div className="flex-column">
-                    <h1 >HELLO!</h1>
+                     <div><h1 >HELLO!</h1>
                     <span>Welcome back, {auth.username}!</span>
-                    <NewsList items = {loadedNews} />
+                    <LatestNewsList items = {loadedNews} /></div>
                 </div>
 
         }
@@ -51,4 +69,4 @@ return (
 );
 };
 
-export default Dash;
+export default MemberDashboard;

@@ -10,7 +10,7 @@ import Button from '../../shared/FormElements/Button'
 
 import '../components/Members.css'
 
-const Profiles = ()=>{
+const Profiles = (props)=>{
     const{isLoading, error, sendRequest, clearError } = useHttpClient();
     const [loadedProfiles, setLoadedProfiles] = useState();
     const [renderUpdateButton, setRenderUpdatedButton] = useState();
@@ -42,7 +42,7 @@ const Profiles = ()=>{
         }
     },[loadedProfiles])
    
-        
+    console.log(loadedProfiles)
     
 
     return( 
@@ -55,12 +55,12 @@ const Profiles = ()=>{
         )}
         <h1>Member Profiles</h1> 
         
-        {renderUpdateButton ? 
+        {renderUpdateButton && !auth.admin? 
             <Button styleBut = {{position:"fixed", top:"5rem", right:"1rem"}} to ="/updateprofile" inverse>Update Profile</Button>
             :
             <Button styleBut = {{position:"fixed", top:"5rem", right:"1rem"}} to ="/newprofile" inverse>New Profile</Button>
         }
-        {!isLoading && loadedProfiles &&<ProfilesList profiles ={loadedProfiles}/>}
+        {!isLoading && loadedProfiles &&<ProfilesList profiles ={loadedProfiles} delete={props.delete}/>}
     </React.Fragment>
         
     

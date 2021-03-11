@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 
-import Dash from './memberdashboard/pages/Memberdashboard.js';
+import MemberDashboard from './memberdashboard/pages/MemberDashboard';
 import Profiles from './profiles/pages/Members.js';
 import MainNavigation from './shared/Navigation/MainNavigation'
 import NewProfile from './profiles/pages/NewProfile'
@@ -21,7 +21,7 @@ function App() {
         routes =(
           <Switch>
             <Route path="/" exact>
-                <Dash/>
+                <MemberDashboard/>
               </Route>
             <Route path="/profiles" exact>
                 <Profiles />
@@ -47,7 +47,7 @@ function App() {
         routes =(
           <Switch>
             <Route path="/" exact>
-                <Dash/>
+                <MemberDashboard/>
               </Route>
             <Route path="/profiles" exact>
                 <Profiles />
@@ -70,7 +70,7 @@ function App() {
       routes =(
         <Switch>
         <Route path="/" exact>
-            <Dash/>
+            <MemberDashboard/>
           </Route>
           <Route path = "/authenticate">
           <Userauth/>

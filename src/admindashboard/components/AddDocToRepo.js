@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react'
 import {useHistory} from 'react-router-dom'
 
 import Input from "../../shared/FormElements/Input"
-import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE, VALIDATOR_URL} from '../../shared/util/validators';
+import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE} from '../../shared/util/validators';
 import {useForm} from '../../shared/hooks/formhook'
 import Button from '../../shared/FormElements/Button';
 import {useHttpClient} from '../../shared/hooks/httphook'

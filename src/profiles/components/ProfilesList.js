@@ -18,6 +18,8 @@ const ProfilesList = (props)=>{
                 image={indprofiles.image}
                 linkedin = {indprofiles.linkedin}
                 elevator={indprofiles.elevator}
+                delete = {props.delete}
+                id={indprofiles.id}
                 />
             ))}
         </div>

@@ -1,13 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {useParams, useHistory} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
 import Modal from "../../shared/UIElements/Modal";
-import Input from "../../shared/FormElements/Input";
 import Button from '../../shared/FormElements/Button'
 import ErrorModal from '../../shared/UIElements/ErrorModal';
 import Spinner from '../../shared/UIElements/Spinner'
-
-import {useForm} from '../../shared/hooks/formhook';
 import { useHttpClient } from "../../shared/hooks/httphook";
 import {AuthContext} from '../../shared/context/auth-context';
 import Repository from '../../repository/pages/Repository';
@@ -18,8 +15,8 @@ const UpdateRepo = props =>{
     const [showConfirmModal, setShowConfirmModal] = useState(false);
     const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const [idToDelete, setidToDelete] = useState();
+    
     const showDeleteWarningHandler = (idToDelete) => {
-        console.log('working!')
         setidToDelete(idToDelete);
         
         setShowConfirmModal(true);

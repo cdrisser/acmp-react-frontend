@@ -32,7 +32,7 @@ const MainNavigation = (props)=>{
                 <span />
                 </button>
                 <h1 className = "main-navigation_h1">
-                    <Link to="/memberdashboard">MemberDash</Link>
+                    <Link to="/MemberDashboard">MemberDash</Link>
                 </h1>
                 <nav className = "main-navigation__header">
                     <NavLink  />
