@@ -1,4 +1,4 @@
-import React,{useContext, useEffect, useState} from 'react';
+import React,{useContext, useState} from 'react';
 import { useHistory} from 'react-router-dom';
 import ErrorModal from '../../shared/UIElements/ErrorModal';
 import Modal from "../../shared/UIElements/Modal";
@@ -15,7 +15,6 @@ const UpdateAdminProfile = props =>{
 
     const showDeleteWarningHandler = (idToDelete) => {
         setidToDelete(idToDelete);
-        
         setShowConfirmModal(true);
       };
     

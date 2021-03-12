@@ -27,7 +27,6 @@ const [loadedNews, setLoadedNews] = useState();
     },[sendRequest])
 
     if(props.admindisplay){
-        console.log(props)
         return(
             <React.Fragment>
         <ErrorModal error={error} onClear={clearError}/>

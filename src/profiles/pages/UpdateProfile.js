@@ -78,7 +78,7 @@ const UpdateProfile = ()=>{
 
         }
         catch(error){
-          console.log(error);
+          
         }
       }
       fetchProfile();
@@ -88,7 +88,6 @@ const UpdateProfile = ()=>{
     
     const updatePlaceHandler = async event =>{
         event.preventDefault();
-        console.log(formState.inputs);
       try{
             const formData = new FormData();
             formData.append("firstname",formState.inputs.firstname.value)

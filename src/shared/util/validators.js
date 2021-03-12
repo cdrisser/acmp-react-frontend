@@ -46,7 +46,6 @@ export const validate = (value, validators) => {
       isValid = isValid && /^\S+@\S+\.\S+$/.test(value);
     }
     if(validator.type === VALIDATOR_TYPE_URL){
-      console.log(value);
       isValid = isValid && linkedInCheck.test(value);
     }
   }

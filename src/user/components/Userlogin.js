@@ -73,7 +73,7 @@ const Userlogin = () =>{
             }
             
             catch(error){
-                console.log(error);
+        
             }
                 
         }

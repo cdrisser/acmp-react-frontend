@@ -42,8 +42,19 @@ const Profiles = (props)=>{
         }
     },[loadedProfiles])
    
-    console.log(loadedProfiles)
     
+    if(props.delete){
+        return(
+        <React.Fragment >
+        <ErrorModal error={error} onClear={clearError}/>
+        {isLoading && (
+            <div className = "center">
+                <Spinner/>
+            </div>
+        )}
+        {!isLoading && loadedProfiles &&<ProfilesList profiles ={loadedProfiles} delete={props.delete}/>}
+    </React.Fragment>)
+    }
 
     return( 
         <React.Fragment >
@@ -53,7 +64,7 @@ const Profiles = (props)=>{
                 <Spinner/>
             </div>
         )}
-        <h1>Member Profiles</h1> 
+        <h1>Member Profiles</h1>
         
         {renderUpdateButton && !auth.admin? 
             <Button styleBut = {{position:"fixed", top:"5rem", right:"1rem"}} to ="/updateprofile" inverse>Update Profile</Button>

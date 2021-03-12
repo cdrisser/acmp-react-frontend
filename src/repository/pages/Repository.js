@@ -14,7 +14,7 @@ const Repository = (props)=>{
         const sendAllRepoRequest = async()=>{
             const responseData = await sendRequest('http://localhost:5000/api/repo/alldocs')
             setLoadedDocs(responseData.documents);
-            console.log(responseData);
+        
         }
         sendAllRepoRequest();
     },[sendRequest])

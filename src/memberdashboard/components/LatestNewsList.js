@@ -3,7 +3,6 @@ import './LatestNewsList.css';
 import LatestNewsItem from './LatestNewsItem';
 
 const NewsList = props =>{
-    console.log(props)
     if(props.items.length ===0){
         return(<div className = "center">
                 <p>There is no current news.  Check back soon!</p>

@@ -1,7 +1,6 @@
 import React from 'react';
 import RepoItem from './RepoItem'
 const RepoList = props =>{
-    console.log(props.repo);
     if(props.repo.length===0){
         return(
             <h2>There are no current items in this repository. </h2>

@@ -67,7 +67,6 @@ const history = useHistory();
     }
     const radioButtonListener = (event)=>{
         setRadioButtonValue(event.target.value);
-        console.log(event.target.value)
     }
 
     return (

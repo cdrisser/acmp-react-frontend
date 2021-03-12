@@ -1,7 +1,8 @@
 import React from 'react';
 import ProfilesInd from './ProfilesInd';
+
 const ProfilesList = (props)=>{
-    if(props.profiles.length === 0){
+    if(props.profiles.length === 0 && !props.delete){
         return(
             <div className = "center">
                 <p>There aren't any profiles.  Be the first to add one!</p>

@@ -4,7 +4,7 @@ import UpdateRepo from './UpdateRepo';
 import Button from '../../shared/FormElements/Button'
 import UpdateNews from './UpdateNews';
 import UpdateAdminProfile from './UpdateAdminProfiles';
-import UpdateUsers from './UpdateUsers';
+import AllUsers from '../components/Allusers'
 import { CSSTransition } from 'react-transition-group';
 import './RepoUpdateContainer.css';
 
@@ -61,7 +61,7 @@ const[currentUpdate, setCurrentUpdate] = useState('');
                     <UpdateAdminProfile/>
                 )}
                 {currentUpdate === 'updateusers' &&(
-                    <UpdateUsers/>
+                    <AllUsers/>
                 )}
                 </div>
                 </CSSTransition>
