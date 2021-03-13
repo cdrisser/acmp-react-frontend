@@ -9,7 +9,7 @@ import UpdateProfile from './profiles/pages/UpdateProfile';
 import Userauth from './user/pages/Userauth'
 import {AuthContext} from './shared/context/auth-context';
 import Repository from './repository/pages/Repository'
-
+import Events from './events/pages/Events';
 import {useAuth} from './shared/hooks/auth-hook'
 import RepoUpdateContainer from './admindashboard/pages/RepoUpdateContainer';
 
@@ -34,6 +34,9 @@ function App() {
               </Route>
               <Route path = "/repo">
                 <Repository/>
+              </Route>
+              <Route path = "/events">
+                <Events/>
               </Route>
               <Route path = "/admin/updaterepo">
                 <RepoUpdateContainer/>
@@ -60,6 +63,7 @@ function App() {
               </Route>
               <Route path = "/repo">
                 <Repository/>
+                
               </Route>
               <Redirect to ="/"/>
           </Switch>

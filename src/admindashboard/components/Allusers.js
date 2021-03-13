@@ -19,7 +19,7 @@ const AllUsers = (props)=>{
     const [loadedUsers, setLoadedUsers] = useState();
     const [verifyConfimed, setVerifyConfirmed] = useState(false);
     const [deletedConfirmed, setDeletedConfirmed] = useState(false);
-
+    const [updatedVerification, setUpdatedVerification] = useState(false);
     const history = useHistory();
 
 
@@ -47,7 +47,7 @@ const AllUsers = (props)=>{
         };
         sendAllUserRequest();
         },[sendRequest]);
-            
+       
 
     
       const confirmDeleteHandler = async () => {
@@ -58,7 +58,7 @@ const AllUsers = (props)=>{
             null,
             {Authorization: "Bearer " + auth.token});
             setDeletedConfirmed(true);
-            useHistory.push('/')
+            history.push('/')
         }
         catch(error){
 
@@ -74,14 +74,14 @@ const AllUsers = (props)=>{
       }
 
     
-    const verifyMemberListener = async (id)=>{
+    const verifyMemberListener = async (id,verify_unverify)=>{
         try{
             await sendRequest(`http://localhost:5000/api/users/verify/${id}`,
               'PATCH',
-              JSON.stringify({verify:true}),
+              JSON.stringify({verify:verify_unverify}),
               {Authorization: "Bearer " + auth.token, 'Content-Type':'application/json'});
               setVerifyConfirmed(true);
-            useHistory.push('/')
+              
               
           }
           catch(error){
@@ -92,8 +92,8 @@ const AllUsers = (props)=>{
         const clearSuccessListener = ()=>{
             setVerifyConfirmed(false);
             setDeletedConfirmed(false);
-            history.push('/profiles')
-        }
+            
+                   }
    
             return(
                 <React.Fragment>
@@ -120,7 +120,7 @@ const AllUsers = (props)=>{
                 <div className = "center">
                     <h1>User List</h1>
                 <ul>
-                    {!isLoading && loadedUsers &&(loadedUsers.map((user)=>{
+                    {!isLoading && loadedUsers  &&(loadedUsers.map((user)=>{
                        return <User key={user.id} firstname = {user.firstname} lastname ={user.lastname} id={user.id} verify={user.verify} delete={showDeleteWarningHandler} verifymember={verifyMemberListener}/>
                     }))}
                 </ul>

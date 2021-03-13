@@ -18,6 +18,10 @@ return <ul className = "nav-links">
             <li>
                 <NavLink to ="/repo">REPOSITORY</NavLink>
             </li>)}
+            {auth.isLoggedIn &&(
+            <li>
+                <NavLink to ="/events">EVENTS</NavLink>
+            </li>)}
             {!auth.isLoggedIn &&
             <li>
                 <NavLink to ="/authenticate">AUTHENTICATE</NavLink>
