@@ -7,7 +7,7 @@ import Spinner from '../../shared/UIElements/Spinner'
 import { useHttpClient } from "../../shared/hooks/httphook";
 import {AuthContext} from '../../shared/context/auth-context';
 
-import MemberDashboard from '../../memberdashboard/pages/MemberDashboard'
+import MemberDashboard from '../../memberdashboard/pages/Memberdashboard'
 import AddNews from '../components/AddNews';
 const UpdateNews = props =>{
     const auth = useContext(AuthContext);

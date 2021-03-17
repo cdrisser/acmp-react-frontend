@@ -46,7 +46,7 @@ const AllUsers = (props)=>{
         }
         };
         sendAllUserRequest();
-        },[sendRequest]);
+        },[sendRequest, verifyConfimed, deletedConfirmed]);
        
 
     
@@ -58,7 +58,7 @@ const AllUsers = (props)=>{
             null,
             {Authorization: "Bearer " + auth.token});
             setDeletedConfirmed(true);
-            history.push('/')
+            
         }
         catch(error){
 
@@ -75,12 +75,15 @@ const AllUsers = (props)=>{
 
     
     const verifyMemberListener = async (id,verify_unverify)=>{
+        
         try{
+            
             await sendRequest(`http://localhost:5000/api/users/verify/${id}`,
               'PATCH',
               JSON.stringify({verify:verify_unverify}),
               {Authorization: "Bearer " + auth.token, 'Content-Type':'application/json'});
               setVerifyConfirmed(true);
+                
               
               
           }
@@ -115,7 +118,7 @@ const AllUsers = (props)=>{
                 </Modal>
                 <ErrorModal error={error} onClear={clearError}/>
                 < SuccessModal showSuccess={deletedConfirmed} onClear ={clearSuccessListener} header='Success' message='Member Deleted'/>
-                < SuccessModal showSuccess={verifyConfimed} onClear ={clearSuccessListener} header='Success' message='Member Verified'/>
+                < SuccessModal showSuccess={verifyConfimed} onClear ={clearSuccessListener} header='Success' message='Member Membership has been updated'/>
 
                 <div className = "center">
                     <h1>User List</h1>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 
-import MemberDashboard from './memberdashboard/pages/MemberDashboard';
+import MemberDashboard from './memberdashboard/pages/Memberdashboard';
 import Profiles from './profiles/pages/Members.js';
 import MainNavigation from './shared/Navigation/MainNavigation'
 import NewProfile from './profiles/pages/NewProfile'
@@ -14,7 +14,7 @@ import {useAuth} from './shared/hooks/auth-hook'
 import RepoUpdateContainer from './admindashboard/pages/RepoUpdateContainer';
 
 function App() {
-  const {token, login, logout, userId,admin, username} = useAuth();
+  const {token, login, logout, userId, admin, username} = useAuth();
   let routes;
     if(token){
       if(admin){

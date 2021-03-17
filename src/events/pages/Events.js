@@ -43,6 +43,8 @@ const Events = (props)=>{
     
     const registerEventHandler = async (event)=>{
         event.preventDefault();
+        console.log(auth)
+        console.log(auth.userId);
         setShowConfirmModal(false);
         try{
             await sendRequest(`http://localhost:5000/api/events/register/${eventid}`,

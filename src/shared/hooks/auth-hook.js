@@ -17,7 +17,8 @@ export const useAuth = ()=> {
       setUserName(username);
       const tokenExpirationDate = expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
       setTokenExpirationDate(tokenExpirationDate);
-      localStorage.setItem('userData', JSON.stringify({userID:uid, username:username,token:token, admin:admin, expiration:tokenExpirationDate.toISOString()}));
+        console.log(uid)
+      localStorage.setItem('userData', JSON.stringify({userId:uid, username:username,token:token, admin:admin, expiration:tokenExpirationDate.toISOString()}));
     },[]);
   
     const logout = useCallback(()=>{
@@ -42,6 +43,7 @@ export const useAuth = ()=> {
 
     useEffect(()=>{
         const storedData = JSON.parse(localStorage.getItem('userData'));
+        console.log(storedData)
           if(storedData && storedData.token && new Date(storedData.expiration)>new Date()){
             login(storedData.userId,storedData.username,storedData.token, storedData.admin, new Date(storedData.expiration))
           }
