@@ -1,7 +1,7 @@
 import React from 'react';
 import IndEvent from '../../events/components/IndEvent'
 const EventList = props =>{
-    console.log(props)
+    
     if(props.events.length===0){
         return(
             <h2>There are no current events. </h2>
@@ -20,6 +20,7 @@ const EventList = props =>{
                         description={eventitem.description}
                         cost={eventitem.cost}
                         register={props.register}
+                        participants = {eventitem.participants}
                     />
                 )
 

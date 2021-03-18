@@ -5,7 +5,7 @@ import {AuthContext} from '../../shared/context/auth-context';
 import {useHttpClient} from '../../shared/hooks/httphook'
 import ErrorModal from '../../shared/UIElements/ErrorModal';
 import Spinner from '../../shared/UIElements/Spinner';
-import './Memberdashboard.css'
+import './MemberDashboard.css'
 
 const MemberDashboard= (props)=>{
     

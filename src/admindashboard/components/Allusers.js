@@ -19,8 +19,6 @@ const AllUsers = (props)=>{
     const [loadedUsers, setLoadedUsers] = useState();
     const [verifyConfimed, setVerifyConfirmed] = useState(false);
     const [deletedConfirmed, setDeletedConfirmed] = useState(false);
-    const [updatedVerification, setUpdatedVerification] = useState(false);
-    const history = useHistory();
 
 
     const showDeleteWarningHandler = (idToDelete) => {

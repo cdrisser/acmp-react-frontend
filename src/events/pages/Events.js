@@ -30,7 +30,7 @@ const Events = (props)=>{
     };
     sendAllEventsRequest();
     
-    },[sendRequest]);
+    },[sendRequest,showConfirmModal]);
 
     const showConfirmHandler = eventid => {
         setShowConfirmModal(true)
@@ -43,16 +43,15 @@ const Events = (props)=>{
     
     const registerEventHandler = async (event)=>{
         event.preventDefault();
-        console.log(auth)
-        console.log(auth.userId);
-        setShowConfirmModal(false);
+        
+        
         try{
             await sendRequest(`http://localhost:5000/api/events/register/${eventid}`,
                 'POST',
                 JSON.stringify({id:auth.userId}),
                 {Authorization: "Bearer " + auth.token,
                 'Content-Type':'application/json'});
-                history.push('/profiles')
+                setShowConfirmModal(false);
             }
         catch(error){
 
@@ -87,7 +86,7 @@ const Events = (props)=>{
         )}
         
         <div className="center">
-            {!isLoading && loadedEvents&& <div><EventList events={loadedEvents} register={showConfirmHandler}/>
+            {!isLoading && loadedEvents&& <div><EventList events={loadedEvents} register= {showConfirmHandler}/>
             
              </div>}
         </div>

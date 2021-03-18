@@ -1,9 +1,21 @@
-import React from 'react'
+import React,{useContext} from 'react'
+
 import Button from "../../shared/FormElements/Button"
+import {AuthContext} from '../../shared/context/auth-context'
+
 
 const IndEvent = props=>{
-
-  
+    const auth = useContext(AuthContext);
+    
+    let regButton = true;
+    
+     props.participants.forEach(user=>{
+        if(user.toString()===auth.userId){
+            
+            regButton = false;
+        }
+        })
+    console.log(regButton)
     return(
         <React.Fragment>
         <div>
@@ -13,7 +25,8 @@ const IndEvent = props=>{
             
             <div>Description:{props.description}</div>
             <div>Cost:{props.cost}</div>
-            <Button onClick={()=>{props.register(props.id)}}>Register</Button>
+            {regButton ? <Button onClick={()=>{props.register(props.id)}}>Register</Button>:
+            <p><em>You're registered!</em></p>}
         </div>
         </React.Fragment>
     )
