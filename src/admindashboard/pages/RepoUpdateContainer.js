@@ -6,7 +6,10 @@ import UpdateNews from './UpdateNews';
 import UpdateAdminProfile from './UpdateAdminProfiles';
 import AllUsers from '../components/Allusers'
 import { CSSTransition } from 'react-transition-group';
+import UpdateEvents from './UpdateEvents';
+
 import './RepoUpdateContainer.css';
+
 
 const RepoUpdateContainer = props=>{
 const[currentUpdate, setCurrentUpdate] = useState('');
@@ -35,6 +38,12 @@ const[currentUpdate, setCurrentUpdate] = useState('');
         },50)
         setCurrentUpdate('');
     }
+    const updateEvents = ()=>{
+        setTimeout(()=>{
+            setCurrentUpdate('updateevents');
+        },50)
+        setCurrentUpdate('');
+    }
     return(
         <React.Fragment>
                <div className='center'>
@@ -42,6 +51,7 @@ const[currentUpdate, setCurrentUpdate] = useState('');
                 <Button onClick={updateNews} size={currentUpdate==='updatenews'&&'big'}>Update News</Button>
                 <Button onClick={updateUsers}size={currentUpdate==='updateusers'&&'big'}>UpdateUsers</Button>
                 <Button onClick={updateProfiles}size={currentUpdate==='updateprofiles'&&'big'}>Update Profiles</Button>
+                <Button onClick={updateEvents}size={currentUpdate==='updateevents'&&'big'}>Update Events</Button>
                </div>
                     <CSSTransition
                         in={!!currentUpdate}
@@ -62,6 +72,9 @@ const[currentUpdate, setCurrentUpdate] = useState('');
                 )}
                 {currentUpdate === 'updateusers' &&(
                     <AllUsers/>
+                )}
+                 {currentUpdate === 'updateevents' &&(
+                    <UpdateEvents/>
                 )}
                 </div>
                 </CSSTransition>

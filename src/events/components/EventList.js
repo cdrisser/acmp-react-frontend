@@ -15,12 +15,14 @@ const EventList = props =>{
                         key={eventitem.id}
                         id={eventitem.id}
                         address = {eventitem.address}
+                        date={eventitem.date}
                         name = {eventitem.name}
                         type={eventitem.type}
                         description={eventitem.description}
                         cost={eventitem.cost}
                         register={props.register}
                         participants = {eventitem.participants}
+                        delete={props.delete}
                     />
                 )
 

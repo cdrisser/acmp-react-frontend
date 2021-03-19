@@ -30,7 +30,7 @@ const Events = (props)=>{
     };
     sendAllEventsRequest();
     
-    },[sendRequest,showConfirmModal]);
+    },[sendRequest,showConfirmModal,props.added]);
 
     const showConfirmHandler = eventid => {
         setShowConfirmModal(true)
@@ -86,7 +86,7 @@ const Events = (props)=>{
         )}
         
         <div className="center">
-            {!isLoading && loadedEvents&& <div><EventList events={loadedEvents} register= {showConfirmHandler}/>
+            {!isLoading && loadedEvents&& <div><EventList events={loadedEvents} delete={props.delete} register= {showConfirmHandler} />
             
              </div>}
         </div>

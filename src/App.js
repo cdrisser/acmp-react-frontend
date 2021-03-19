@@ -63,8 +63,11 @@ function App() {
               </Route>
               <Route path = "/repo">
                 <Repository/>
-                
               </Route>
+              <Route path = "/events">
+                <Events/>
+              </Route>
+              
               <Redirect to ="/"/>
           </Switch>
         );

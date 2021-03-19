@@ -15,18 +15,18 @@ const IndEvent = props=>{
             regButton = false;
         }
         })
-    console.log(regButton)
     return(
         <React.Fragment>
         <div>
             <h2>{props.name}</h2>
             <div>Type:{props.type}</div>
             <div>Address:{`${props.address.street} ${props.address.city_state_zip}`}</div>
-            
+            <div>Date:{props.date}</div>
             <div>Description:{props.description}</div>
             <div>Cost:{props.cost}</div>
-            {regButton ? <Button onClick={()=>{props.register(props.id)}}>Register</Button>:
+            {!props.delete && regButton ? <Button onClick={()=>{props.register(props.id)}}>Register</Button>:
             <p><em>You're registered!</em></p>}
+            {props.delete && <Button onClick={()=>{props.delete(props.id)}}>Delete</Button>}
         </div>
         </React.Fragment>
     )

@@ -111,7 +111,7 @@ const AllUsers = (props)=>{
                     }
                 >
                     <p>
-                    Sure you want to delete this document? This can't be reversed!
+                    Sure you want to delete this user? This can't be reversed!
                     </p>
                 </Modal>
                 <ErrorModal error={error} onClear={clearError}/>
