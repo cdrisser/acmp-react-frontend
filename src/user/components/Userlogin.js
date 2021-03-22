@@ -9,8 +9,9 @@ import ErrorModal from '../../shared/UIElements/ErrorModal';
 import Spinner from '../../shared/UIElements/Spinner'
 import SignupModal from '../../shared/UIElements/SignupModal';
 import {useHttpClient} from '../../shared/hooks/httphook'
+import '../../memberdashboard/pages/MemberDashboard.css'
 
-const Userlogin = () =>{
+const Userlogin = (props) =>{
     const auth = useContext(AuthContext);
     const[isLoginMode, setIsLoginMode] = useState(true);
     const [showSignup, setShowSignup] = useState(false);
@@ -105,18 +106,19 @@ const Userlogin = () =>{
              {isLoading && <Spinner/>}
              <ErrorModal error ={error} onClear ={clearError}/>
              <SignupModal showSignup ={showSignup} onClear ={showSignupHandler}/>
-        <div className = "form-control-login  spin">
-        {isLoginMode?<h1>Log in</h1>:<h1>Sign up</h1>}
-        <form  onSubmit={loginSubmitHandler}>
+        <div className = {`${props.style}`}>
+            
+        {!isLoginMode&&<h1>Sign up</h1>}
+        <form className="login-form"  onSubmit={loginSubmitHandler}>
             {!isLoginMode && <Input id = 'firstname' element = "text" label = 'First name:' errorText = "Please enter a valid first name" onInput={inputHandler} validators ={[VALIDATOR_REQUIRE()]}/>}
             {!isLoginMode && <Input id = 'lastname' element = "text" label = 'Last name:' errorText = "Please enter a valid last name" onInput={inputHandler} validators ={[VALIDATOR_REQUIRE()]}/>}
-            <Input id = 'email' element = 'text' label = "Email:" placeholder = 'username@email.com' errorText ="Please enter a valid email address" onInput={inputHandler} validators={[VALIDATOR_EMAIL()]}/>
-            <Input id = 'password' element = 'text' label = 'Password:' placeholder = '********'  errorText ="Please enter 8 or more characters" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(8)]}/>    
-            <Button disabled = {!formState.isValid} type = "submit">{isLoginMode?'Log in':'Sign up'}</Button>
+            <Input id = 'email' element = 'text' label = "" placeholder = 'Email' errorText ="Please enter a valid email address" onInput={inputHandler} validators={[VALIDATOR_EMAIL()]}/>
+            <Input id = 'password' element = 'text' label = '' placeholder = 'Password'  errorText ="Please enter 8 or more characters" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(8)]}/>    
+            <Button className='loginbut' disabled = {!formState.isValid} styleBut={{width:'100%'}} type = "submit">{isLoginMode?'Log in':'Sign up'}</Button>
             </form>
-            <Button inverse onClick={switchModeHandler}> {isLoginMode ?'Sign up':'Log in'}</Button>
-            
+            <Button className='loginbut' onClick={switchModeHandler}> {isLoginMode ?'Sign up':'Log in'}</Button>
             </div>
+            
             </React.Fragment>
 
         

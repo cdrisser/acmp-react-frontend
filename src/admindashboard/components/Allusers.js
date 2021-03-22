@@ -65,7 +65,7 @@ const AllUsers = (props)=>{
 
       if(isLoading){
         return(
-          <div className = "center">
+          <div >
                 <Spinner/>
           </div>
         )
@@ -118,7 +118,7 @@ const AllUsers = (props)=>{
                 < SuccessModal showSuccess={deletedConfirmed} onClear ={clearSuccessListener} header='Success' message='Member Deleted'/>
                 < SuccessModal showSuccess={verifyConfimed} onClear ={clearSuccessListener} header='Success' message='Member Membership has been updated'/>
 
-                <div className = "center">
+                <div >
                     <h1>User List</h1>
                 <ul>
                     {!isLoading && loadedUsers  &&(loadedUsers.map((user)=>{

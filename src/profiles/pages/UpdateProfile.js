@@ -132,7 +132,7 @@ const UpdateProfile = ()=>{
 
       if(isLoading){
         return(
-          <div className = "center">
+          <div >
                 <Spinner/>
           </div>
         )

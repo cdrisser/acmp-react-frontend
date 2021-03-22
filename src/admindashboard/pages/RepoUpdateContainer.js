@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 
-import UpdateRepo from './UpdateRepo';
+import UpdateRepo from '../components/UpdateRepo';
 import Button from '../../shared/FormElements/Button'
-import UpdateNews from './UpdateNews';
-import UpdateAdminProfile from './UpdateAdminProfiles';
+import UpdateNews from '../components/UpdateNews';
+import UpdateAdminProfile from '../components/UpdateAdminProfiles';
 import AllUsers from '../components/Allusers'
 import { CSSTransition } from 'react-transition-group';
-import UpdateEvents from './UpdateEvents';
+import UpdateEvents from '../components/UpdateEvents';
 
 import './RepoUpdateContainer.css';
 
@@ -46,7 +46,7 @@ const[currentUpdate, setCurrentUpdate] = useState('');
     }
     return(
         <React.Fragment>
-               <div className='center'>
+               <div >
                <Button onClick={updateRepo}  size={currentUpdate==='updaterepo'&&'big'}>Update Repo</Button>
                 <Button onClick={updateNews} size={currentUpdate==='updatenews'&&'big'}>Update News</Button>
                 <Button onClick={updateUsers}size={currentUpdate==='updateusers'&&'big'}>UpdateUsers</Button>

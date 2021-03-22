@@ -42,7 +42,7 @@ const UpdateRepo = props =>{
 
       if(isLoading){
         return(
-          <div className = "center">
+          <div >
                 <Spinner/>
           </div>
         )

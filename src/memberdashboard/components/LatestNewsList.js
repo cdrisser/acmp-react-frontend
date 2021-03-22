@@ -4,14 +4,18 @@ import LatestNewsItem from './LatestNewsItem';
 
 const NewsList = props =>{
     if(props.items.length ===0){
-        return(<div className = "center">
+        return(<div >
                 <p>There is no current news.  Check back soon!</p>
         </div>
         ); 
     }
     return (
     <div className="current-news" >
-        <h2 className= "current-news-header">Current News</h2>
+        <header className="header_photo">
+            <h1 className= "">Current News</h1>
+
+        </header>
+        
         <ul className="news-list">
             {props.items.map(latest =>{
                 return <LatestNewsItem key ={latest.id} headline = {latest.headline} body = {latest.newsbody} date = {latest.date} delete={props.delete} id = {latest.id}/>

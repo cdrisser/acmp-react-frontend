@@ -7,7 +7,7 @@ const AdminNav = props=>{
     return(
         <React.Fragment>
             <h1>Admin Dash</h1>
-            <div className = 'center' >
+            <div  >
                 
 
             </div>

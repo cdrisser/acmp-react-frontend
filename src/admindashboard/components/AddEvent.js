@@ -86,7 +86,7 @@ const AddEvent = (props)=>{
             {isLoading && <Spinner/>}
             <ErrorModal error={error} onClear ={clearError}/>
             < SuccessModal showSuccess={newProfileSuccess} onClear ={clearSuccessListener} header='Success!' message='Your event has been successfully uploaded!'/>
-            <form className="center" id = 'form' onSubmit={eventsInputHandler}>
+            <form  id = 'form' onSubmit={eventsInputHandler}>
                 <Input element="text" id="name" label="Name " errorText ="Please enter a valid nametype" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
                 <Input element="text" id="type" label="Type " errorText="Please enter a valid type" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
                 <Input element="text" id="street" label="Street " errorText="Please enter a valid street" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>

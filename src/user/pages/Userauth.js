@@ -5,7 +5,9 @@ import './Userauth.css';
 
 const Userauth = props =>{
     return(
-        <Userlogin/>
+        <div className='center authenticate-wrapper'>
+            <Userlogin style='dashboard-login'/>
+        </div>
     )
 }
 

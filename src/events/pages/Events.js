@@ -80,12 +80,12 @@ const Events = (props)=>{
       </Modal>
         {useLocation().pathname !== '/admin/updaterepo' &&<h1>ACMP Events</h1>}
         {isLoading && (
-            <div className = "center">
+            <div >
                 <Spinner/>
             </div>
         )}
         
-        <div className="center">
+        <div >
             {!isLoading && loadedEvents&& <div><EventList events={loadedEvents} delete={props.delete} register= {showConfirmHandler} />
             
              </div>}

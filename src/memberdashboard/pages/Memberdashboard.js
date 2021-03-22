@@ -54,7 +54,7 @@ return (
        {!isLoading && loadedNews && <div>
         {!auth.isLoggedIn ? 
         <div className="dashboard-container">
-            <LatestNewsList items = {loadedNews} /><UserLogin/></div>:
+            <LatestNewsList items = {loadedNews} /><UserLogin style='dashboard-login'/></div>:
             
           <div className="flex-column">
                      <div><h1 >HELLO!</h1>

@@ -1,15 +1,13 @@
-import React,{useContext, useEffect, useState} from 'react';
+import React,{useContext, useState} from 'react';
 import { useHistory} from 'react-router-dom';
 import ErrorModal from '../../shared/UIElements/ErrorModal';
 import Modal from "../../shared/UIElements/Modal";
-import Button from '../../shared/FormElements/Button'
 import Spinner from '../../shared/UIElements/Spinner'
 import { useHttpClient } from "../../shared/hooks/httphook";
 import {AuthContext} from '../../shared/context/auth-context';
-
-import MemberDashboard from '../../memberdashboard/pages/Memberdashboard'
-import AddNews from '../components/AddNews';
-const UpdateNews = props =>{
+import Profiles from '../../profiles/pages/Members'
+import Button from '../../shared/FormElements/Button'
+const UpdateAdminProfile = props =>{
     const auth = useContext(AuthContext);
     const [showConfirmModal, setShowConfirmModal] = useState(false);
     const {isLoading, error, sendRequest, clearError} = useHttpClient();
@@ -17,7 +15,6 @@ const UpdateNews = props =>{
 
     const showDeleteWarningHandler = (idToDelete) => {
         setidToDelete(idToDelete);
-        
         setShowConfirmModal(true);
       };
     
@@ -28,7 +25,7 @@ const UpdateNews = props =>{
       const confirmDeleteHandler = async () => {
         setShowConfirmModal(false);
         try{
-          await sendRequest(`http://localhost:5000/api/news/${idToDelete}`,
+          await sendRequest(`http://localhost:5000/api/profiles/${idToDelete}`,
             'DELETE',
             null,
             {Authorization: "Bearer " + auth.token});
@@ -41,7 +38,7 @@ const UpdateNews = props =>{
 
       if(isLoading){
         return(
-          <div className = "center">
+          <div >
                 <Spinner/>
           </div>
         )
@@ -65,12 +62,9 @@ const UpdateNews = props =>{
             </p>
         </Modal>
         <ErrorModal error={error} onClear={clearError}/>
-        <div className = 'center'>
-            <MemberDashboard admindisplay delete={showDeleteWarningHandler}/>
-            <AddNews/>
-            </div>
+        <div ></div>
+        <Profiles delete = {showDeleteWarningHandler}/>
         </React.Fragment>
     )
 }
-
-export default UpdateNews;
+export default UpdateAdminProfile;

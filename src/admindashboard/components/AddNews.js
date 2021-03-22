@@ -60,7 +60,7 @@ const AddNews = (props)=>{
             {isLoading && <Spinner/>}
             <ErrorModal error={error} onClear ={clearError}/>
             < SuccessModal showSuccess={newProfileSuccess} onClear ={clearSuccessListener} header='Success!' message='Your news has been successfully uploaded!'/>
-            <form className="center" id = 'form' onSubmit={newsInputHandler}>
+            <form  id = 'form' onSubmit={newsInputHandler}>
                 <Input element="text" id="headline" label="Headline " errorText ="Please enter a valid headline" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
                 <Input element="text" id="newsbody" label="Body " errorText="Please enter a valid body" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
                 <Button type = "submit" disabled = {!formState.isValid}>Add News</Button>

@@ -4,7 +4,7 @@ import ProfilesInd from './ProfilesInd';
 const ProfilesList = (props)=>{
     if(props.profiles.length === 0 && !props.delete){
         return(
-            <div className = "center">
+            <div >
                 <p>There aren't any profiles.  Be the first to add one!</p>
             </div>
         );

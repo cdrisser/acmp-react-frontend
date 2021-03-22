@@ -13,3 +13,8 @@
   background: #ffd1d1;
 
 }
+.form-control--invalid p{
+  margin:0 0 .25rem 0 ;
+  font-size: 12px;
+
+}

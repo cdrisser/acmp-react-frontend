@@ -48,7 +48,7 @@ const Profiles = (props)=>{
         <React.Fragment >
         <ErrorModal error={error} onClear={clearError}/>
         {isLoading && (
-            <div className = "center">
+            <div >
                 <Spinner/>
             </div>
         )}
@@ -60,7 +60,7 @@ const Profiles = (props)=>{
         <React.Fragment >
         <ErrorModal error={error} onClear={clearError}/>
         {isLoading && (
-            <div className = "center">
+            <div >
                 <Spinner/>
             </div>
         )}

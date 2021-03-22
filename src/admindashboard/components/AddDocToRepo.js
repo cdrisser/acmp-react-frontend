@@ -74,7 +74,7 @@ const history = useHistory();
         {isLoading && <Spinner/>}
         <ErrorModal error={error} onClear ={clearError}/>
         < SuccessModal showSuccess={newProfileSuccess} onClear ={clearSuccessListener} header='Success!' message='Your document has been successfully uploaded!'/>
-        <form className="center" id = 'form' onSubmit={profileInputHandler}>
+        <form id = 'form' onSubmit={profileInputHandler}>
 
             <Input element="text" id="repotitle" label="Title" errorText ="Please enter a valid title" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
             <Input element="text" id="repodescription" label="Description" errorText="Please enter a valid description" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>

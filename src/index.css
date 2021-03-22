@@ -6,10 +6,12 @@
 
 html {
   font-family: 'Open Sans', sans-serif;
+  background:#f0f2f5;
 }
 
 body {
   margin: 0;
+  height:100vh;
   
 }
 
@@ -46,4 +48,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+input{
+  margin-bottom:0.5rem;
 }

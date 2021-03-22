@@ -8,7 +8,7 @@ import Spinner from '../../shared/UIElements/Spinner'
 import { useHttpClient } from "../../shared/hooks/httphook";
 import {AuthContext} from '../../shared/context/auth-context';
 import Events from '../../events/pages/Events'
-import AddEvent from '../components/AddEvent'
+import AddEvent from './AddEvent'
 
 const UpdateEvents = props =>{
     const auth = useContext(AuthContext);
@@ -42,7 +42,7 @@ const UpdateEvents = props =>{
 
       if(isLoading){
         return(
-          <div className = "center">
+          <div >
                 <Spinner/>
           </div>
         )

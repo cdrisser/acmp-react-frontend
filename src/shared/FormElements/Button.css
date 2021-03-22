@@ -6,9 +6,9 @@
     background: linear-gradient(#92B0BE,#A3BDCA);
     color: white;
     cursor: pointer;
-    margin: .5rem;
     text-decoration: none;
     display: inline-block;
+    margin: .25rem 0 ; 
   }
   
   .button:focus {

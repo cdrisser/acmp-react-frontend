@@ -23,7 +23,7 @@ const Repository = (props)=>{
     <React.Fragment>
         <ErrorModal error={error} onClear={clearError}/>
         {isLoading && (
-            <div className = "center">
+            <div >
                 <Spinner/>
             </div>
         )}
