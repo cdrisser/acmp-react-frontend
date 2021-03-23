@@ -1,8 +1,12 @@
-.newProfile{
-    position:absolute;
-    right:25px;
-    top:2px;
-}
+
 .membercontainer{
     background-color:rgb(240, 231, 231);
+}
+.profile-buttons{
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+}
+.button{
+    margin:0 2px ;
 }

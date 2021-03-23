@@ -41,6 +41,17 @@ const [loadedNews, setLoadedNews] = useState();
         </React.Fragment>
         )
     }
+    const loginRender = !auth.isLoggedIn ? 
+        <div className="column-flex-container">
+            <LatestNewsList items = {loadedNews} /><UserLogin style='dashboard-login'/></div>:
+            
+          <div className="flex-column">
+                    
+                    <LatestNewsList items = {loadedNews} />
+                    
+                </div>
+
+        
 
 return (
     <React.Fragment>
@@ -52,17 +63,14 @@ return (
         )}
 
        {!isLoading && loadedNews && <div>
-        {!auth.isLoggedIn ? 
-        <div className="dashboard-container">
-            <LatestNewsList items = {loadedNews} /><UserLogin style='dashboard-login'/></div>:
-            
-          <div className="flex-column">
-                     <div><h1 >HELLO!</h1>
-                    <span>Welcome back, {auth.username}!</span>
-                    <LatestNewsList items = {loadedNews} /></div>
-                </div>
-
-        }
+           {auth.isLoggedIn && <div className='welcome-msg'>Welcome back, {auth.username}!</div>}
+        <div className='header-photo-container'>
+           
+            <div className='header-photo'>
+            <h2>ACMP ARIZONA MEMBERS</h2>
+            </div>
+        </div>
+        {loginRender}
         </div>}
     </React.Fragment>
 );

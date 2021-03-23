@@ -13,8 +13,9 @@
   .modal__header {
     width: 100%;
     padding: 1rem 0.5rem;
-    background: linear-gradient(#92B0BE,#A3BDCA);
+    background-color: #344955 ;
     color: white;
+    border-radius: 8px 8px 0 0 ;
   }
   
   .modal__header h2 {

@@ -1,34 +1,46 @@
 .ind-profile{
     display:flex;
     margin:2% auto;
-    background-color:rgb(226, 221, 221);
-    border-radius: 1%;
+    background-color:white;
+    border-radius: 4px;
     justify-content: flex-start;
     align-items: center;
     width:50%;
+    
     
 }
 .leftsideprofile{
     display:flex;
     flex-direction: column;
     width:25%;
-    margin:auto;
+    height:100%;
+    margin:0 1rem;
     padding: 2%;
-    
+    align-items:stretch;
     padding:2.5% 0;
-    align-items: center;
+    align-items:center;
+}
+.leftsideprofile a:hover{
+    color:#9CCE6D;
+}
+.leftsideprofile a:hover{
+    color:#9CCE6D;
+}
+.leftsideprofile a:hover{
+    color:#9CCE6D;
 }
 .profile-pic{
-    width:100%;
-    height:100%;
+    width: 100px;
+    height:100px;
     border-radius: 50%;
-    object-fit: cover;
+    object-fit:cover;
     display:block;
 }
 .rightsideprofile{
-    width:50%;
-    margin:auto;
-    padding: 2%;
-    
-    
+   width:75%;
+   margin:0 1rem;
+   font-size: smaller;
+}
+.h2-profile{
+    margin:0;
 }

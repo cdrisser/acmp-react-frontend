@@ -15,7 +15,7 @@ const ProfileInd = (props)=>{
                 <img className="profile-pic" src={`http://localhost:5000/${props.image}`} alt ={props.profilename} />
                 <div>{`${props.firstname} ${props.lastname}`}</div>
                 
-                <div><a href ={props.linkedin}>LinkedIn</a></div>
+                <Button href ={props.linkedin} size='small' >Linkedin</Button>
             </div>
             <div className ="rightsideprofile">
                 <div>{props.elevator}</div>

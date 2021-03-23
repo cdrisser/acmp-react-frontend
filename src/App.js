@@ -79,10 +79,7 @@ function App() {
         <Route path="/" exact>
             <MemberDashboard/>
           </Route>
-          <Route path = "/authenticate">
-          <Userauth/>
-        </Route>
-        <Redirect to ="/authenticate"/>
+        <Redirect to ="/"/>
         </Switch>
       );
     }

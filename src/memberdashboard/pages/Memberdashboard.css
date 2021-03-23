@@ -1,7 +1,8 @@
-.dashboard-container{
+.column-flex-container{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 
 }
 .dashboard-login  {
@@ -11,7 +12,7 @@
     display: flex;
     flex-direction: column;
     background:white;
-    border-radius: 5%;
+    border-radius: 4px;
     padding: 1rem;
     overflow: hidden;
     margin:0 1rem;
@@ -25,11 +26,45 @@ input{
     width:100%;
 }
 
-h2{
-    text-align: center;
-    font-size: 18px;
-}
+
 .current-news{
     margin:0 1rem;
     width:50%;
+}
+.header-photo{
+    background: 
+    /* top, transparent red */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.4), 
+      rgba(0, 0, 0, 0.4)
+    ),
+    /* bottom, image */ url('../../../src/images/david-sola-3guU1kCxxy0-unsplash.jpg');
+    border-radius: 4px;
+    height:100%;
+    background-size:cover;
+    background-repeat: no-repeat;
+    object-fit:cover;
+  
+    
+}
+.header-photo-container{
+    height:60vh;
+    margin:0 4rem;
+    
+}
+.header-photo h2{
+    color:#9CCE6D;
+    font-size: 6vw;
+    padding-top:15%;
+    margin-top:0;
+    font-weight:300;
+    
+    
+}
+.welcome-msg{
+    color:#9CCE6D;
+    width:100%;
+    text-align:right;
+    padding-right:5px;
+    padding-bottom: 5px;
 }

@@ -106,18 +106,21 @@ const Userlogin = (props) =>{
              {isLoading && <Spinner/>}
              <ErrorModal error ={error} onClear ={clearError}/>
              <SignupModal showSignup ={showSignup} onClear ={showSignupHandler}/>
-        <div className = {`${props.style}`}>
+             
+                
+            <div className = {`${props.style}`}>
+                
+            {!isLoginMode&&<h1>Sign up</h1>}
             
-        {!isLoginMode&&<h1>Sign up</h1>}
-        <form className="login-form"  onSubmit={loginSubmitHandler}>
-            {!isLoginMode && <Input id = 'firstname' element = "text" label = 'First name:' errorText = "Please enter a valid first name" onInput={inputHandler} validators ={[VALIDATOR_REQUIRE()]}/>}
-            {!isLoginMode && <Input id = 'lastname' element = "text" label = 'Last name:' errorText = "Please enter a valid last name" onInput={inputHandler} validators ={[VALIDATOR_REQUIRE()]}/>}
-            <Input id = 'email' element = 'text' label = "" placeholder = 'Email' errorText ="Please enter a valid email address" onInput={inputHandler} validators={[VALIDATOR_EMAIL()]}/>
-            <Input id = 'password' element = 'text' label = '' placeholder = 'Password'  errorText ="Please enter 8 or more characters" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(8)]}/>    
-            <Button className='loginbut' disabled = {!formState.isValid} styleBut={{width:'100%'}} type = "submit">{isLoginMode?'Log in':'Sign up'}</Button>
-            </form>
-            <Button className='loginbut' onClick={switchModeHandler}> {isLoginMode ?'Sign up':'Log in'}</Button>
-            </div>
+            <form className="login-form"  onSubmit={loginSubmitHandler}>
+                {!isLoginMode && <Input id = 'firstname' element = "text" label = 'First name:' errorText = "Please enter a valid first name" onInput={inputHandler} validators ={[VALIDATOR_REQUIRE()]}/>}
+                {!isLoginMode && <Input id = 'lastname' element = "text" label = 'Last name:' errorText = "Please enter a valid last name" onInput={inputHandler} validators ={[VALIDATOR_REQUIRE()]}/>}
+                <Input id = 'email' element = 'text' label = "" placeholder = 'Email' errorText ="Please enter a valid email address" onInput={inputHandler} validators={[VALIDATOR_EMAIL()]}/>
+                <Input id = 'password' element = 'text' label = '' placeholder = 'Password'  errorText ="Please enter 8 or more characters" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(8)]}/>    
+                <Button disabled = {!formState.isValid} styleBut={{width:'100%',margin: '.25rem 2px'}} type = "submit" >{isLoginMode?'Log in':'Sign up'}</Button>
+                </form>
+                <Button onClick={switchModeHandler} styleBut={{width:'100%',margin: '.25rem 2px'}} inverse> {isLoginMode ?'Sign up':'Log in'}</Button>
+                </div>
             
             </React.Fragment>
 

@@ -5,8 +5,13 @@ import './Userauth.css';
 
 const Userauth = props =>{
     return(
-        <div className='center authenticate-wrapper'>
-            <Userlogin style='dashboard-login'/>
+             <div className='header-photo-container'>
+           
+           <div className='header-photo'>
+           <h2>ACMP ARIZONA MEMBERS</h2>
+           
+       </div>
+            <Userlogin style='dashboard-login authenticate-padding'/>
         </div>
     )
 }

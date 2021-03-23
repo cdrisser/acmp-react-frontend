@@ -31,9 +31,9 @@ const MainNavigation = (props)=>{
                 <span />
                 <span />
                 </button>
-                <h1 className = "main-navigation_h1">
-                    <Link to="/MemberDashboard">MemberDash</Link>
-                </h1>
+                <div className = "main-navigation_link">
+                    <Link to="/MemberDashboard"><img src={require('../../images/ACMP AZ Horizontal Transparent.png')}></img></Link>
+                </div>
                 <nav className = "main-navigation__header">
                     <NavLink  />
                 </nav>

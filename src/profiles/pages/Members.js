@@ -66,11 +66,11 @@ const Profiles = (props)=>{
         )}
         <h1>Member Profiles</h1>
         
-        {renderUpdateButton && !auth.admin? 
-            <Button styleBut = {{position:"fixed", top:"5rem", right:"1rem"}} to ="/updateprofile" inverse>Update Profile</Button>
-            :
-            <Button styleBut = {{position:"fixed", top:"5rem", right:"1rem"}} to ="/newprofile" inverse>New Profile</Button>
-        }
+            <div className='profile-buttons'>
+            <Button  to ="/updateprofile" >Update</Button>
+            
+            <Button  to ="/newprofile" >Create</Button>
+            </div>
         {!isLoading && loadedProfiles &&<ProfilesList profiles ={loadedProfiles} delete={props.delete}/>}
     </React.Fragment>
         
