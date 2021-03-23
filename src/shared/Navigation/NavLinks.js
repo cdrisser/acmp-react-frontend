@@ -23,7 +23,7 @@ return <ul className = "nav-links">
                 <NavLink to ="/events">EVENTS</NavLink>
             </li>)}
             {auth.admin && <li>
-            <NavLink to ="/admin/updaterepo">ADMIN</NavLink>
+            <NavLink to ="/admin">ADMIN</NavLink>
             </li>}
             {auth.isLoggedIn &&
             <li>

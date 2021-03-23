@@ -6,7 +6,6 @@ import Profiles from './profiles/pages/Members.js';
 import MainNavigation from './shared/Navigation/MainNavigation'
 import NewProfile from './profiles/pages/NewProfile'
 import UpdateProfile from './profiles/pages/UpdateProfile';
-import Userauth from './user/pages/Userauth'
 import {AuthContext} from './shared/context/auth-context';
 import Repository from './repository/pages/Repository'
 import Events from './events/pages/Events';
@@ -38,7 +37,7 @@ function App() {
               <Route path = "/events">
                 <Events/>
               </Route>
-              <Route path = "/admin/updaterepo">
+              <Route path = "/admin">
                 <RepoUpdateContainer/>
               </Route>
               <Redirect to ="/"/>

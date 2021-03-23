@@ -11,7 +11,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    background:white;
+    background:#a4a4a4;
     border-radius: 4px;
     padding: 1rem;
     overflow: hidden;
@@ -32,13 +32,7 @@ input{
     width:50%;
 }
 .header-photo{
-    background: 
-    /* top, transparent red */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.4), 
-      rgba(0, 0, 0, 0.4)
-    ),
-    /* bottom, image */ url('../../../src/images/david-sola-3guU1kCxxy0-unsplash.jpg');
+    background:  url('../../../src/images/david-sola-3guU1kCxxy0-unsplash.jpg');
     border-radius: 4px;
     height:100%;
     background-size:cover;
@@ -53,16 +47,18 @@ input{
     
 }
 .header-photo h2{
-    color:#9CCE6D;
+    color:#395a6f;
     font-size: 6vw;
-    padding-top:15%;
+    padding-top:5%;
+    text-align: center;
     margin-top:0;
     font-weight:300;
+
     
     
 }
 .welcome-msg{
-    color:#9CCE6D;
+    color:#395a6f;
     width:100%;
     text-align:right;
     padding-right:5px;

@@ -1,7 +1,7 @@
 .ind-profile{
     display:flex;
     margin:2% auto;
-    background-color:white;
+    background-color:#a4a4a4;
     border-radius: 4px;
     justify-content: flex-start;
     align-items: center;
@@ -21,13 +21,13 @@
     align-items:center;
 }
 .leftsideprofile a:hover{
-    color:#9CCE6D;
+    color:#395a6f;
 }
 .leftsideprofile a:hover{
-    color:#9CCE6D;
+    color:#395a6f;
 }
 .leftsideprofile a:hover{
-    color:#9CCE6D;
+    color:#395a6f;
 }
 .profile-pic{
     width: 100px;
@@ -43,4 +43,5 @@
 }
 .h2-profile{
     margin:0;
+    color:#395a6f;
 }

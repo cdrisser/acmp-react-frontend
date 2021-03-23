@@ -82,7 +82,7 @@ const history = useHistory();
             <label htmlFor="docs"><input type="radio" id="docs" name="type" value="docs" onChange={radioButtonListener}/> docs</label>
             <label htmlFor="misc" ><input type="radio" id="misc" name="type" value="misc" defaultChecked onChange={radioButtonListener}/> misc</label>
             <DocUpload id ="file" onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]}/>
-            <Button type = "submit" disabled = {!formState.isValid}/>
+            <Button type = "submit" disabled = {!formState.isValid}>Add</Button>
         </form>
     </React.Fragment>)
 } 

@@ -22,10 +22,10 @@ const RepoItem = (props)=>{
 
     return(<div className="repo-container-ind">
             <div className = "info-container">
-                <div>{props.repotitle}</div>
+                <div className='repo-title'><b>{props.repotitle}</b></div>
                 <div>{props.repodescription}</div>
-                <div><a href= {`http://localhost:5000/${props.file}`} ><img style={{width:"100px",height:"100px"}} src = {`http://localhost:5000/${props.file}`}/></a></div>
-    
+                <div><a href= {`http://localhost:5000/${props.file}`} >Download</a></div>
+                
             </div>
         </div>
         )

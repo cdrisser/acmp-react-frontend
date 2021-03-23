@@ -79,15 +79,17 @@ const history = useHistory();
         {isLoading && <Spinner/>}
         <ErrorModal error={error} onClear ={clearError}/>
         < SuccessModal showSuccess={newProfileSuccess} onClear ={clearSuccessListener} header='Success' message='Successfully created profile!'/>
-        <h2 className='h2-profile'>Create a profile</h2>
+        
         <form className="form-control " onSubmit={profileInputHandler}>
-
+            <h2 className='h2-profile'>Create a profile</h2>
             <Input element="text" id="firstname" label="First Name" errorText ="Please enter a valid first name" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
             <Input element="text" id="lastname" label="Last Name" errorText="Please enter a valid last name" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
             <Input element="text" type ="url" id="linkedin" label="LinkedIn URL" errorText="Please enter your linkedin URL" onInput={inputHandler} validators={[VALIDATOR_URL()]}/>
             <ImageUpload id ="image" onInput={inputHandler}/>
             <Input element="textarea" id="elevator" label="Elevator speech" errorText="Please tell us about you!" rows="10" cols="50" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(10), VALIDATOR_MAXLENGTH(500)]}/>
-            <Button type = "submit" disabled = {!formState.isValid}>Create Profile</Button>
+            <div className='button-center'>
+                <Button type = "submit" disabled = {!formState.isValid}>Create Profile</Button>
+            </div>
         </form>
     </React.Fragment>)
 } 

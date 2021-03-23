@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../../shared/FormElements/Button';
 
 import RepoItem from './RepoItem'
 
@@ -11,17 +12,19 @@ const RepoList = props =>{
     else{
         return(
             <div>
-                {props.repo.map((repoitem)=>(
-                    <RepoItem
-                        key={repoitem.id}
-                        id={repoitem.id}
-                        repotitle = {repoitem.repotitle}
-                        repodescription = {repoitem.repodescription}
-                        file={repoitem.file}
-                        delete = {props.delete}
-                    />
-                )
-
+                {props.repo.map((repoitem,index)=>(
+                    <div className='repo-details'>
+                        <RepoItem
+                            key={repoitem.id}
+                            id={repoitem.id}
+                            repotitle = {repoitem.repotitle}
+                            repodescription = {repoitem.repodescription}
+                            file={repoitem.file}
+                            delete = {props.delete}
+                        />
+                        {<hr className='repo-horizline'></hr>}
+                    </div>
+                    )
                 )}
             </div>
         )

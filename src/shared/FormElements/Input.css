@@ -1,6 +1,4 @@
-.form-control--invalid{
-  width:inherit;
-}
+
 .form-control--invalid label,
 .form-control--invalid p {
   color: red;
@@ -11,6 +9,7 @@
 .form-control--invalid textarea {
   border-color: red;
   background: #ffd1d1;
+  width:100%;
 
 }
 .form-control--invalid p{

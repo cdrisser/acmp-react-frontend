@@ -13,13 +13,16 @@ import './RepoUpdateContainer.css';
 
 const RepoUpdateContainer = props=>{
 const[currentUpdate, setCurrentUpdate] = useState('');
-    const updateRepo = ()=>{
+    
+    const updateRepos = ()=>{
+        console.log("here")
         setTimeout(()=>{
             setCurrentUpdate('updaterepo');
         },5)
         setCurrentUpdate('');
     }
     const updateNews = ()=>{
+        
         setTimeout(()=>{
             setCurrentUpdate('updatenews');
         },5)
@@ -47,7 +50,8 @@ const[currentUpdate, setCurrentUpdate] = useState('');
     return(
         <React.Fragment>
                <div >
-               <Button onClick={updateRepo}  size={currentUpdate==='updaterepo'&&'big'}>Update Repo</Button>
+               <Button onClick={updateRepos}  size={currentUpdate==='updaterepo'&&'big'}>Update Repo</Button>
+
                 <Button onClick={updateNews} size={currentUpdate==='updatenews'&&'big'}>Update News</Button>
                 <Button onClick={updateUsers}size={currentUpdate==='updateusers'&&'big'}>UpdateUsers</Button>
                 <Button onClick={updateProfiles}size={currentUpdate==='updateprofiles'&&'big'}>Update Profiles</Button>

@@ -55,11 +55,13 @@ const pickedImage = (event)=>{
            onChange={pickedImage}
            /> 
             <div className={`${props.center && 'center'}`}>
-                <div>
+                <div className = 'image-picker-center'>
                     {!previewUrl && props.updateimageUrl && <img className = 'image-preview' src = {`http://localhost:5000/${props.updateimageUrl}`} alt="Preview"/>}
-                    {previewUrl && <img src = {previewUrl} alt="Preview"/>}
+                    {previewUrl && <img className = 'image-preview' src = {previewUrl} alt="Preview"/>}
                     {!previewUrl && !props.updateimageUrl && <p >Please pick an image!</p>}
-                    <Button type="button" className='inline-button' onClick={pickImageHandler}>PICK IMAGE</Button>
+                    <div>
+                        <Button type="button" styleBut={{margin:'0 0 0 .5rem '}}  onClick={pickImageHandler}>PICK IMAGE</Button>
+                    </div>
                 </div>
                 
             </div>

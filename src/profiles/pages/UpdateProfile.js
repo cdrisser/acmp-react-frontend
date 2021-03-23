@@ -109,6 +109,7 @@ const UpdateProfile = ()=>{
       }
     }
     const showDeleteWarningHandler = () => {
+      console.log('here')
         setShowConfirmModal(true);
       };
     
@@ -155,7 +156,7 @@ const UpdateProfile = ()=>{
         footer={
           <React.Fragment>
             <Button inverse onClick = {cancelDeleteHandler}>CANCEL</Button>
-            <Button danger onClick = {confirmDeleteHandler}>DELETE</Button>
+            <Button danger onClick = {confirmDeleteHandler}>Delete</Button>
           </React.Fragment>
         }
       >
@@ -163,20 +164,23 @@ const UpdateProfile = ()=>{
           Do you want to proceed and delete this profile? This can't be reversed!
         </p>
       </Modal>
-        <h2 style = {{textAlign:'center'}}>Update Profile</h2> 
-        <Button danger onClick={showDeleteWarningHandler} styleBut = {{position:"fixed", top:"5rem", right:"1rem"}}>
-              DELETE
-            </Button>
+        
+        
             <ErrorModal error={error} onClear={clearError}/>
         {!isLoading && loadProfile &&(
+            <div className='form-container'>
             <form className="form-control" onSubmit={updatePlaceHandler}>
+              <h2 style = {{textAlign:'center'}}>Update Profile</h2> 
                 <Input element="text" id="firstname" label="First Name" errorText ="Please enter a valid first name" value = {loadProfile.firstname} valid = {true} onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
                 <Input element="text" id="lastname" label="Last Name" errorText="Please enter a valid last name" onInput={inputHandler} value = {loadProfile.lastname} valid = {true} validators={[VALIDATOR_MINLENGTH(2)]}/>
                 <Input element="text" type ="url" id="linkedin" label="LinkedIn URL" errorText="Please enter your linkedin URL" onInput={inputHandler} value = {loadProfile.linkedin} valid = {true}  validators={[VALIDATOR_URL()]}/>
                 <ImageUpload id ="image" updateimageUrl ={loadProfile.image} onInput={inputHandler}/>
                 <Input element="textarea" id="elevator" label="Elevator speech" errorText="Please tell us about you!" rows="10" cols="50" onInput={inputHandler} value = {loadProfile.elevator} valid = {true} validators={[VALIDATOR_MINLENGTH(10), VALIDATOR_MAXLENGTH(500)]}/>
-                <Button type = "submit" disabled = {!formState.isValid}>Update Profile</Button>
-            </form>)}
+                <div className='button-center'>
+                  <Button type = "submit"  disabled = {!formState.isValid}>Update Profile</Button>
+                  <Button danger onClick={showDeleteWarningHandler} >Delete</Button>
+                </div>
+            </form> </div>)}
     </React.Fragment>
         );
 };
