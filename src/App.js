@@ -11,7 +11,7 @@ import Repository from './repository/pages/Repository'
 import Events from './events/pages/Events';
 import {useAuth} from './shared/hooks/auth-hook'
 import RepoUpdateContainer from './admindashboard/pages/RepoUpdateContainer';
-
+import Footer from './shared/Footer/Footer'
 function App() {
   const {token, login, logout, userId, admin, username} = useAuth();
   let routes;
@@ -21,21 +21,6 @@ function App() {
           <Switch>
             <Route path="/" exact>
                 <MemberDashboard/>
-              </Route>
-            <Route path="/profiles" exact>
-                <Profiles />
-              </Route>
-              <Route path="/newprofile">
-                <NewProfile/>
-              </Route>
-              <Route path = "/updateprofile">
-                <UpdateProfile/>
-              </Route>
-              <Route path = "/repo">
-                <Repository/>
-              </Route>
-              <Route path = "/events">
-                <Events/>
               </Route>
               <Route path = "/admin">
                 <RepoUpdateContainer/>
@@ -90,6 +75,7 @@ function App() {
       <main>
           {routes}
       </main>
+      <Footer/>
     </Router>
     </AuthContext.Provider>
   )

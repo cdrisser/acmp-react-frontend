@@ -1,5 +1,5 @@
 import React,{useContext} from 'react';
-
+import {useLocation} from 'react-router-dom';
 import Button from '../../shared/FormElements/Button'
 
 import {AuthContext} from '../../shared/context/auth-context';
@@ -7,14 +7,13 @@ import './RepoItem.css';
 
 const RepoItem = (props)=>{
     const auth = useContext(AuthContext);
-    
-
     if(auth.admin){
         return(
             <React.Fragment>
                 <div>Title: {props.repotitle}</div>
-                <div>ID: {props.id}</div>
+                <div className='button-center'>
                 <Button onClick ={()=>props.delete(props.id)} id={props.id}>Delete</Button>
+                </div>
             </React.Fragment>
         )
     }

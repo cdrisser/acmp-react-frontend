@@ -118,13 +118,14 @@ const AllUsers = (props)=>{
                 < SuccessModal showSuccess={deletedConfirmed} onClear ={clearSuccessListener} header='Success' message='Member Deleted'/>
                 < SuccessModal showSuccess={verifyConfimed} onClear ={clearSuccessListener} header='Success' message='Member Membership has been updated'/>
 
-                <div >
+                <div className="flex-column">
                     <h1>User List</h1>
                 <ul>
                     {!isLoading && loadedUsers  &&(loadedUsers.map((user)=>{
                        return <User key={user.id} firstname = {user.firstname} lastname ={user.lastname} id={user.id} verify={user.verify} delete={showDeleteWarningHandler} verifymember={verifyMemberListener}/>
                     }))}
                 </ul>
+               
                 </div>
                 </React.Fragment>
             )

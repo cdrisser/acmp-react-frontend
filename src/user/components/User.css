@@ -1,0 +1,7 @@
+.user-item{
+    list-style: none;
+    background-color: #f3f2f2;
+    padding:1rem;
+    margin:1rem;
+    border-radius: 4px;
+}

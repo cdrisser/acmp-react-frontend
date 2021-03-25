@@ -74,15 +74,18 @@ const history = useHistory();
         {isLoading && <Spinner/>}
         <ErrorModal error={error} onClear ={clearError}/>
         < SuccessModal showSuccess={newProfileSuccess} onClear ={clearSuccessListener} header='Success!' message='Your document has been successfully uploaded!'/>
-        <form id = 'form' onSubmit={profileInputHandler}>
+        <form id = 'form' className='form-control' onSubmit={profileInputHandler}>
 
             <Input element="text" id="repotitle" label="Title" errorText ="Please enter a valid title" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
             <Input element="text" id="repodescription" label="Description" errorText="Please enter a valid description" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
-            <label htmlFor="media"><input type="radio" id="media" name="type" value="media" onChange={radioButtonListener}/> media</label>
-            <label htmlFor="docs"><input type="radio" id="docs" name="type" value="docs" onChange={radioButtonListener}/> docs</label>
-            <label htmlFor="misc" ><input type="radio" id="misc" name="type" value="misc" defaultChecked onChange={radioButtonListener}/> misc</label>
+            <div className='center radio-buts-repo'>
+            
+            <label htmlFor="media"><input type="radio" id="media" name="type" value="media" onChange={radioButtonListener}/> Media</label>
+            <label htmlFor="docs"><input type="radio" id="docs" name="type" value="docs" onChange={radioButtonListener}/> Documents</label>
+            <label htmlFor="misc" ><input type="radio" id="misc" name="type" value="misc" defaultChecked onChange={radioButtonListener}/> Miscellaneous</label>
+            </div>
             <DocUpload id ="file" onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]}/>
-            <Button type = "submit" disabled = {!formState.isValid}>Add</Button>
+            <Button styleBut={{marginTop:'.5rem'}} type = "submit" disabled = {!formState.isValid}>Add</Button>
         </form>
     </React.Fragment>)
 } 

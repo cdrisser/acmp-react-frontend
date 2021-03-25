@@ -36,16 +36,15 @@ const [loadedNews, setLoadedNews] = useState();
             </div>
         )}
         {!isLoading && loadedNews && 
-        <div className="dashboard-container">
-            <LatestNewsList items = {loadedNews} delete ={props.delete} /></div>}
+            <LatestNewsList items = {loadedNews} delete ={props.delete} />}
         </React.Fragment>
         )
     }
     const loginRender = !auth.isLoggedIn ? 
-        <div className="column-flex-container">
+        <div className="row-flex-container news-background">
             <LatestNewsList items = {loadedNews} /><UserLogin style='dashboard-login'/></div>:
             
-          <div className="flex-column">
+          <div className="flex-column news-background">
                     
                     <LatestNewsList items = {loadedNews} />
                     

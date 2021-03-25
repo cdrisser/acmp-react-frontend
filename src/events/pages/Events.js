@@ -78,18 +78,15 @@ const Events = (props)=>{
           Are you sure you'd like to register for this event?
         </p>
       </Modal>
-        {useLocation().pathname !== '/admin/updaterepo' &&<h1>ACMP Events</h1>}
+        {useLocation().pathname !== '/admin' &&<h1>ACMP Events</h1>}
         {isLoading && (
             <div >
                 <Spinner/>
             </div>
         )}
-        
-        <div >
-            {!isLoading && loadedEvents&& <div><EventList events={loadedEvents} delete={props.delete} register= {showConfirmHandler} />
-            
+                {!isLoading && loadedEvents&& <div><EventList events={loadedEvents} delete={props.delete} register= {showConfirmHandler} />
              </div>}
-        </div>
+        
         
     </React.Fragment>
     );

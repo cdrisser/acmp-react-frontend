@@ -65,7 +65,7 @@ const UpdateNews = props =>{
             </p>
         </Modal>
         <ErrorModal error={error} onClear={clearError}/>
-        <div >
+        <div className='center'>
             <MemberDashboard admindisplay delete={showDeleteWarningHandler}/>
             <AddNews/>
             </div>

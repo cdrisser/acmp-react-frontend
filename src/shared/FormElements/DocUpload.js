@@ -55,7 +55,7 @@ const pickedFile = (event)=>{
            /> 
             <div className={`${props.center && 'center'}`}>
 
-               <Button type="button" onClick={pickFileHandler}>Choose File</Button>
+               <Button type="button" onClick={pickFileHandler} inverse>Choose File</Button>
             </div>
             {!isValid && <p>{props.errorText}</p>}
         </div>

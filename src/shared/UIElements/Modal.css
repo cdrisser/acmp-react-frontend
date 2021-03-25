@@ -4,7 +4,7 @@
     top: 22vh;
     left: 10%;
     width: 100%;
-    background: #a4a4a4;
+    background: white;
     box-shadow: 0 2px 8px #00000042;
     border-radius: 8px;
     
@@ -13,13 +13,14 @@
   .modal__header {
     width: 100%;
     padding: 1rem 0.5rem;
-    background-color: #a4a4a4 ;
+    background-color: #63a583 ;
     color: #a4a4a4;
     border-radius: 8px 8px 0 0 ;
   }
   
   .modal__header h2 {
     margin: 0.5rem;
+    color: white;
   }
   
   .modal__content {

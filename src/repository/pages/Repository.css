@@ -11,12 +11,11 @@ border-radius: 4px;
 width:100%;
 max-width: 19rem;
 
-margin:1.166666667%
+margin:.5rem;
 }
-
 h2{
     text-align: center;
-    color:#395a6f;
+    color:#63a583;
 }
 .repo-img{
     width:100%;
@@ -29,11 +28,13 @@ h2{
     font-size: 12px;
     
 }
-.repo-horizline
-{
-    border: 1px solid  #395a6f;
-    background-color:  #395a6f;;
-}
+
 .repo-title{
     text-align: center;
+}
+.doc-upload-container{
+    padding:2rem 0;
+}
+.update-news-container{
+    width:100%;
 }

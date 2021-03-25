@@ -73,14 +73,12 @@ const UpdateEvents = props =>{
         </p>
     </Modal>
             <ErrorModal error={error} onClear={clearError}/>
-            <div>
-                <h1>Update Event</h1>
-                <div>
+            <div >
+                <div className='doc-upload-container'>
                     <Events delete ={showDeleteWarningHandler} added={addedEventHandler}  />
                     
                 </div>
-                <div>
-                    <h2>Add New Event</h2>
+                <div className='doc-upload-container'>
                     <AddEvent addedevent={addedEventHandler} />
                 </div>
             </div>

@@ -3,6 +3,7 @@ import React,{useContext} from 'react'
 import Button from "../../shared/FormElements/Button"
 import {AuthContext} from '../../shared/context/auth-context'
 
+import './Events.css'
 
 const IndEvent = props=>{
     const auth = useContext(AuthContext);
@@ -16,19 +17,32 @@ const IndEvent = props=>{
         }
         })
     return(
-        <React.Fragment>
-        <div>
-            <h2>{props.name}</h2>
-            <div>Type:{props.type}</div>
-            <div>Address:{`${props.address.street} ${props.address.city_state_zip}`}</div>
-            <div>Date:{props.date}</div>
-            <div>Description:{props.description}</div>
-            <div>Cost:{props.cost}</div>
-            {!props.delete && regButton ? <Button onClick={()=>{props.register(props.id)}}>Register</Button>:
-            <p><em>You're registered!</em></p>}
-            {props.delete && <Button onClick={()=>{props.delete(props.id)}}>Delete</Button>}
+        <div className='ind-event'>
+            <h2 className='event-h2'>{props.name}</h2>
+            <hr className='horizline-indevent'></hr>
+            
+            <div className='event-details'>
+            <div>{props.description}</div>
+                <div className='event-address'>{`${props.address.street} ${props.address.city_state_zip}`}</div>
+                <div className = 'icon-container'>
+                    <div className=' icons-event'>
+                    <ion-icon name="calendar-sharp"></ion-icon>                        {props.date}
+                    </div>
+                    <div className=' icons-event'> 
+                    <ion-icon name="calendar-sharp"></ion-icon>                        ${props.cost}                      
+                    </div>
+                </div>
+                <div className='button-center'>
+                    {!auth.admin && <div>
+                    {!props.delete && regButton ? <Button onClick={()=>{props.register(props.id)}}>Register</Button>:
+                    <p className='registered-p'>You're registered!</p>}</div>}
+                    {props.delete && <Button onClick={()=>{props.delete(props.id)}} danger>Delete</Button>}
+            </div>
+                
+            </div>
+            
         </div>
-        </React.Fragment>
+        
     )
 }
 

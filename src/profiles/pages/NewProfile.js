@@ -39,6 +39,7 @@ const NewProfile = (props)=>{
         value:'',
         isValid:false
     }
+    
 },
 false);
 
@@ -55,7 +56,6 @@ const history = useHistory();
             formData.append("image",formState.inputs.image.value)
             formData.append("linkedin",formState.inputs.linkedin.value)
             formData.append("elevator",formState.inputs.elevator.value)
-        
         try{
             await sendRequest('http://localhost:5000/api/profiles/',
             'POST', 

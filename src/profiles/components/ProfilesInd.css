@@ -1,33 +1,43 @@
 .ind-profile{
     display:flex;
     margin:2% auto;
-    background-color:#a4a4a4;
+    background-color:#f1f1f1;
     border-radius: 4px;
     justify-content: flex-start;
     align-items: center;
     width:50%;
-    
-    
-}
-.leftsideprofile{
-    display:flex;
     flex-direction: column;
-    width:25%;
-    height:100%;
+}
+.topsideprofile{
+    display:flex;
+    width:100%;
+    height:25%;
     margin:0 1rem;
-    padding: 2%;
+    flex-wrap: wrap;
     align-items:stretch;
-    padding:2.5% 0;
-    align-items:center;
+    padding:  5% 15% 1%  ;
+    justify-content:space-around;
+}
+.rightside-top{
+    width:100%;
+}
+
+.bottomsideprofile{
+    width:100%;
+    height:75%;
+    margin:0 1rem;
+    font-size: smaller;
+    padding: 1rem ;
+ }
+
+.leftsideprofile a:hover{
+    color:#63a583;
 }
 .leftsideprofile a:hover{
-    color:#395a6f;
+    color:#63a583;
 }
 .leftsideprofile a:hover{
-    color:#395a6f;
-}
-.leftsideprofile a:hover{
-    color:#395a6f;
+    color:#63a583;
 }
 .profile-pic{
     width: 100px;
@@ -36,12 +46,13 @@
     object-fit:cover;
     display:block;
 }
-.rightsideprofile{
-   width:75%;
-   margin:0 1rem;
-   font-size: smaller;
-}
+
 .h2-profile{
     margin:0;
-    color:#395a6f;
+    color:#63a583;
+}
+.profile-name{
+    text-align: center;
+    margin: .25rem 0;
+    font-weight:bold;
 }

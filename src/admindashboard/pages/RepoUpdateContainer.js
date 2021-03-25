@@ -49,13 +49,13 @@ const[currentUpdate, setCurrentUpdate] = useState('');
     }
     return(
         <React.Fragment>
-               <div >
-               <Button onClick={updateRepos}  size={currentUpdate==='updaterepo'&&'big'}>Update Repo</Button>
+               <div className='center'>
+               <Button  styleBut={{margin:'.25rem 2px'}} onClick={updateRepos}  size={currentUpdate==='updaterepo'&&'big'} >Update Repo</Button>
 
-                <Button onClick={updateNews} size={currentUpdate==='updatenews'&&'big'}>Update News</Button>
-                <Button onClick={updateUsers}size={currentUpdate==='updateusers'&&'big'}>UpdateUsers</Button>
-                <Button onClick={updateProfiles}size={currentUpdate==='updateprofiles'&&'big'}>Update Profiles</Button>
-                <Button onClick={updateEvents}size={currentUpdate==='updateevents'&&'big'}>Update Events</Button>
+                <Button styleBut={{margin:'.25rem 2px'}} onClick={updateNews} size={currentUpdate==='updatenews'&&'big'}>Update News</Button>
+                <Button styleBut={{margin:'.25rem 2px'}} onClick={updateUsers}size={currentUpdate==='updateusers'&&'big'}>Update Users</Button>
+                <Button styleBut={{margin:'.25rem 2px'}} onClick={updateProfiles}size={currentUpdate==='updateprofiles'&&'big'}>Update Profiles</Button>
+                <Button styleBut={{margin:'.25rem 2px'}} onClick={updateEvents}size={currentUpdate==='updateevents'&&'big'}>Update Events</Button>
                </div>
                     <CSSTransition
                         in={!!currentUpdate}

@@ -60,11 +60,16 @@ const AddNews = (props)=>{
             {isLoading && <Spinner/>}
             <ErrorModal error={error} onClear ={clearError}/>
             < SuccessModal showSuccess={newProfileSuccess} onClear ={clearSuccessListener} header='Success!' message='Your news has been successfully uploaded!'/>
-            <form  id = 'form' onSubmit={newsInputHandler}>
-                <Input element="text" id="headline" label="Headline " errorText ="Please enter a valid headline" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
-                <Input element="text" id="newsbody" label="Body " errorText="Please enter a valid body" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
-                <Button type = "submit" disabled = {!formState.isValid}>Add News</Button>
-            </form>
+            <div className = 'add-news-container'>
+                <h1>Add News</h1>
+                <form  id = 'form' className='form-control' onSubmit={newsInputHandler}>
+                    <Input element="text" id="headline" label="Headline " errorText ="Please enter a valid headline" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
+                    <Input element="textarea"  id="newsbody" label="Body " errorText="Please enter a valid body" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
+                    <div className='button-center'>
+                    <Button type = "submit" disabled = {!formState.isValid}>Add News</Button>
+                    </div>
+                </form>
+            </div>
         </React.Fragment>)
     } 
 

@@ -22,7 +22,7 @@ const RepoList = props =>{
                             file={repoitem.file}
                             delete = {props.delete}
                         />
-                        {<hr className='repo-horizline'></hr>}
+                        <hr className='horizline'></hr>
                     </div>
                     )
                 )}

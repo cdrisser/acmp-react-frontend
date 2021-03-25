@@ -10,15 +10,15 @@ return <ul className = "nav-links">
             <li>
                 <NavLink to ="/">MEMBER DASH</NavLink>
             </li>
-            {auth.isLoggedIn &&(
+            {auth.isLoggedIn && !auth.admin &&(
             <li>
                 <NavLink to ="/profiles">PROFILES </NavLink>
             </li>)}
-            {auth.isLoggedIn &&(
+            {auth.isLoggedIn && !auth.admin &&(
             <li>
                 <NavLink to ="/repo">REPOSITORY</NavLink>
             </li>)}
-            {auth.isLoggedIn &&(
+            {auth.isLoggedIn && !auth.admin &&(
             <li>
                 <NavLink to ="/events">EVENTS</NavLink>
             </li>)}

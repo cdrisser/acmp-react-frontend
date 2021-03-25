@@ -71,11 +71,11 @@ const UpdateRepo = props =>{
             <div>
                 <h1>Update Repo</h1>
                 <div>
-                    <h2>Delete</h2>
+                    
                     <Repository delete ={showDeleteWarningHandler}/>
                     
                 </div>
-                <div>
+                <div className='doc-upload-container'>
                     <h2>Upload New Doc</h2>
                     <AddDocToRepo/>
                 </div>

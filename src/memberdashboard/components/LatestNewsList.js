@@ -1,8 +1,12 @@
 import React from 'react';
+import {useLocation} from 'react-router-dom';
+
 import './LatestNewsList.css';
 import LatestNewsItem from './LatestNewsItem';
 
 const NewsList = props =>{
+const location = useLocation()
+;
     if(props.items.length ===0){
         return(<div >
                 <p>There is no current news.  Check back soon!</p>
@@ -11,10 +15,10 @@ const NewsList = props =>{
     }
     return (
     <div className="current-news" >
-        <header className="header_photo">
-            <h1 className= "">Current News</h1>
+        
+        {location.pathname !== '/admin' &&<h1>Current News</h1>}
 
-        </header>
+        
         
         <ul className="news-list">
             {props.items.map(latest =>{

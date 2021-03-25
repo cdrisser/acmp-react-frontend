@@ -4,7 +4,7 @@
     top: 22vh;
     left: 10%;
     width: 100%;
-    background: #a4a4a4;
+    background: white;
     box-shadow: 0 2px 8px #00000042;
     border-radius: 8px;
     
@@ -29,4 +29,18 @@
     transform: translateX(-100%);
   opacity: 0;
   transition: all 200ms;
+  }
+
+  .radio-buts-repo{
+    margin:.5rem 0;
+  }
+  .update-news-container{
+    width: 100%;
+  }
+  .repo-container-but{
+    margin:.25rem 2px;
+  }
+  .add-news-container{
+    width:100%;
+    margin-bottom:.5rem;
   }

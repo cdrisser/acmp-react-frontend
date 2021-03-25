@@ -27,22 +27,22 @@ const Repository = (props)=>{
                 <Spinner/>
             </div>
         )}
-        {useLocation().pathname !== '/admin/updaterepo' &&<h1>Repository</h1>}
+        {useLocation().pathname !== '/admin' &&<h1>Repository</h1>}
         <div className = 'repo-container'>
          <div className='specific-repo-container'>
-         <img className='repo-img' src={require('../../images/media-repo.jpg')}></img>
+         {useLocation().pathname !== '/admin'&&  <img className='repo-img' src={require('../../images/media-repo.jpg')}></img>}
              <h2>Media</h2>
             {!isLoading && loadedDocs &&  <RepoList repo={loadedDocs.filter(doc=>doc.type==='media')} delete = {props.delete}/>  }
          </div>
          <div className='specific-repo-container'>
        
-         <img className='repo-img' src={require('../../images/docs-repo.jpg')}></img>
+         {useLocation().pathname !== '/admin' && <img className='repo-img' src={require('../../images/docs-repo.jpg')}></img>}
          <h2>Docs</h2>
             {!isLoading && loadedDocs && <RepoList repo={loadedDocs.filter(doc=>doc.type==='docs')} delete = {props.delete}/>}
          </div>   
          <div className='specific-repo-container'>
          
-         <img className='repo-img' src={require('../../images/misc-repo.jpg')}></img>
+            {useLocation().pathname !== '/admin'&& <img className='repo-img' src={require('../../images/misc-repo.jpg')}></img>}
          <h2>Misc</h2>
             {!isLoading && loadedDocs && <RepoList repo={loadedDocs.filter(doc=>doc.type==='misc')} delete = {props.delete}/>}
          </div>      

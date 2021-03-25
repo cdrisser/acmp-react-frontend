@@ -9,7 +9,7 @@ const EventList = props =>{
     }
     else{
         return(
-            <div>
+            <div className='center' >
                 {props.events.map((eventitem)=>(
                     <IndEvent
                         key={eventitem.id}

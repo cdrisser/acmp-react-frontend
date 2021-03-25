@@ -6,7 +6,7 @@
 
 html {
   font-family: 'Open Sans', sans-serif;
-  background:#e0e1e3;
+  background:#dfdfdf;
 }
 
 body {
@@ -41,9 +41,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 .flex-column{
-  text-align: center;
+ 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,17 +56,33 @@ input{
 }
 input:focus {
   outline: none !important;
-  border:1px solid #395a6f;
-  box-shadow: 0 0 5px #395a6f;
+  border:1px solid #63a583;
+  box-shadow: 0 0 5px #63a583;
 }
-.column-flex-container{
+.row-flex-container{
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  
 
 }
 textarea{
   width:100%;
   border-radius: 4px;
+  font-family: inherit;
+  font-size: 12px;
+}
+.button-center{
+  display: flex;
+  justify-content: center;
+}
+.horizline
+{
+    border: .25px solid  #e7e7e7;
+    background-color:  #c2c2c2;
+    width:90%;
+    margin-top:rem;
+}
+h1{
+  color:#63a583;
 }
