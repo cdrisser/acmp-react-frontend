@@ -5,7 +5,7 @@ import Input from "../../shared/FormElements/Input";
 import Button from '../../shared/FormElements/Button'
 import ErrorModal from '../../shared/UIElements/ErrorModal';
 import Spinner from '../../shared/UIElements/Spinner'
-import {VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_URL} from '../../shared/util/validators';
+import {VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_URL,VALIDATOR_EMAIL} from '../../shared/util/validators';
 import {useForm} from '../../shared/hooks/formhook';
 import { useHttpClient } from "../../shared/hooks/httphook";
 import {AuthContext} from '../../shared/context/auth-context';
@@ -40,7 +40,12 @@ const UpdateProfile = ()=>{
         elevator:{
             value:"",            
             isValid:false
-        }
+        },
+        email:{
+          value:"",            
+          isValid:false
+      }
+
     },
     false);
 
@@ -71,7 +76,11 @@ const UpdateProfile = ()=>{
               elevator:{
                   value:responseData.profile.elevator,
                   isValid:true
-              }
+              },
+              email:{
+                value:responseData.email.elevator,
+                isValid:true
+            }
           },
           true)
 
@@ -94,6 +103,7 @@ const UpdateProfile = ()=>{
             formData.append("image",formState.inputs.image.value)
             formData.append("linkedin",formState.inputs.linkedin.value)
             formData.append("elevator",formState.inputs.elevator.value)
+            formData.append("email",formState.inputs.email.value)
             formData.append("profileCreator",auth.userId)
             
         await sendRequest(`http://localhost:5000/api/profiles/${auth.userId}`,
@@ -173,6 +183,7 @@ const UpdateProfile = ()=>{
               <h2 style = {{textAlign:'center'}}>Update Profile</h2> 
                 <Input element="text" id="firstname" label="First Name" errorText ="Please enter a valid first name" value = {loadProfile.firstname} valid = {true} onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
                 <Input element="text" id="lastname" label="Last Name" errorText="Please enter a valid last name" onInput={inputHandler} value = {loadProfile.lastname} valid = {true} validators={[VALIDATOR_MINLENGTH(2)]}/>
+                <Input element="text"  id="email" label="Email" errorText="Please enter your email " onInput={inputHandler} value = {loadProfile.email} valid = {true}  validators={[VALIDATOR_EMAIL()]}/>
                 <Input element="text" type ="url" id="linkedin" label="LinkedIn URL" errorText="Please enter your linkedin URL" onInput={inputHandler} value = {loadProfile.linkedin} valid = {true}  validators={[VALIDATOR_URL()]}/>
                 <ImageUpload id ="image" updateimageUrl ={loadProfile.image} onInput={inputHandler}/>
                 <Input element="textarea" id="elevator" label="Elevator speech" errorText="Please tell us about you!" rows="10" cols="50" onInput={inputHandler} value = {loadProfile.elevator} valid = {true} validators={[VALIDATOR_MINLENGTH(10), VALIDATOR_MAXLENGTH(500)]}/>

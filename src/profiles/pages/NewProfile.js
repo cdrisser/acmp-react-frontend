@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 
 import Input from "../../shared/FormElements/Input"
 import '../components/NewProfile.css'
-import {VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_URL} from '../../shared/util/validators';
+import {VALIDATOR_EMAIL, VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_URL} from '../../shared/util/validators';
 import {useForm} from '../../shared/hooks/formhook'
 import Button from '../../shared/FormElements/Button';
 import ImageUpload from '../../shared/FormElements/ImageUpload'
@@ -38,6 +38,10 @@ const NewProfile = (props)=>{
     elevator:{
         value:'',
         isValid:false
+    },
+    email:{
+        value:'',
+        isValid:false
     }
     
 },
@@ -56,6 +60,7 @@ const history = useHistory();
             formData.append("image",formState.inputs.image.value)
             formData.append("linkedin",formState.inputs.linkedin.value)
             formData.append("elevator",formState.inputs.elevator.value)
+            formData.append("email",formState.inputs.email.value)
         try{
             await sendRequest('http://localhost:5000/api/profiles/',
             'POST', 
@@ -84,6 +89,7 @@ const history = useHistory();
             <h2 className='h2-profile'>Create a profile</h2>
             <Input element="text" id="firstname" label="First Name" errorText ="Please enter a valid first name" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
             <Input element="text" id="lastname" label="Last Name" errorText="Please enter a valid last name" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
+            <Input element="text"  id="email" label="Email" errorText="Please enter your email " onInput={inputHandler} validators={[VALIDATOR_EMAIL()]}/>
             <Input element="text" type ="url" id="linkedin" label="LinkedIn URL" errorText="Please enter your linkedin URL" onInput={inputHandler} validators={[VALIDATOR_URL()]}/>
             <ImageUpload id ="image" onInput={inputHandler}/>
             <Input element="textarea" id="elevator" label="Elevator speech" errorText="Please tell us about you!" rows="10" cols="50" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(10), VALIDATOR_MAXLENGTH(500)]}/>

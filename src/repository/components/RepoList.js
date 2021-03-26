@@ -12,8 +12,8 @@ const RepoList = props =>{
     else{
         return(
             <div>
-                {props.repo.map((repoitem,index)=>(
-                    <div className='repo-details'>
+                {props.repo.map((repoitem)=>(
+                    <div className='repo-details' key={repoitem.id}>
                         <RepoItem
                             key={repoitem.id}
                             id={repoitem.id}

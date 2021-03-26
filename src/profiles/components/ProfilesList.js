@@ -21,6 +21,7 @@ const ProfilesList = (props)=>{
                 elevator={indprofiles.elevator}
                 delete = {props.delete}
                 id={indprofiles.id}
+                email={indprofiles.email}
                 />
             ))}
         </div>
