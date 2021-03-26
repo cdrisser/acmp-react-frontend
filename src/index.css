@@ -2,17 +2,22 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
 }
+#root{
+  min-height: 100vh; 
+ overflow: hidden;
+ display: block;
+ position: relative;
 
-html {
+ padding-bottom: 75px; 
+}
+html,body {
   font-family: 'Open Sans', sans-serif;
   background:#dfdfdf;
-}
+  height: 100%;
+  position: relative;
 
-body {
-  margin: 0;
-  height:100vh;
-  
 }
 
 .slide-in-left-enter {
@@ -85,4 +90,7 @@ textarea{
 }
 h1{
   color:#63a583;
+  text-align: center;
+  font-size: 3vw;
+  margin:15px 0;
 }

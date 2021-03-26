@@ -11,11 +11,11 @@ h1{
 .news-item h2{
     color:#63a583 ;
     text-align: left;
-    font-size:18px;
+    font-size:1.5rem;
     margin:1rem 0;
 }
 .date-news{
-    font-size:10px;
+    font-size:.5rem;
     margin-top:-.5rem;
 }
 hr{
@@ -24,4 +24,13 @@ hr{
     width:50%;
     background-color: #63a583;
 
+}
+.body-news{
+    font-size: 1rem;
+    padding-top:.5rem;
+}
+@media (max-width:768px){
+    .header-photo-container{
+        height:30vh;
+    }
 }

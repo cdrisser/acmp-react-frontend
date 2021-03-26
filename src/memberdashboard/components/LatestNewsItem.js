@@ -4,6 +4,7 @@ import {useLocation} from 'react-router-dom';
 import './LatestNewsItem.css';
 import {AuthContext} from '../../shared/context/auth-context'
 import Button from '../../shared/FormElements/Button';
+
 const LatestNewsItem = (props)=>{
         const auth = useContext(AuthContext);
     const location = useLocation().pathname === '/admin';

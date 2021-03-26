@@ -32,7 +32,7 @@ const MainNavigation = (props)=>{
                 <span />
                 </button>
                 <div className = "main-navigation_link">
-                    <Link to="/MemberDashboard"><img src={require('../../images/ACMP AZ Horizontal Transparent.png')}></img></Link>
+                    <Link to="/MemberDashboard"><img src={require('../../images/ACMP AZ Horizontal Transparent.png')} alt="acmp-logo"></img></Link>
                 </div>
                 <nav className = "main-navigation__header">
                     <NavLink  />

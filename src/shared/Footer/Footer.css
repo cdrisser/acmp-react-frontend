@@ -1,29 +1,67 @@
 .social-media{
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     background-color: #333;
-    padding: 0 20px;
-    margin-top: 10px;
-    height: 75px;
+    overflow: hidden;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom:0; 
+    left:0;
+    width:100%;
+    height:75px;
     
 }
-.social-box {
-    margin-left:220px;
-    margin-top: auto;
-    margin-bottom: auto;
+.social-box{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 .copy-right{
     color: #fff;
-    font-weight: 300;
-    margin-left: auto;
-    margin-right:220px;
-    margin-top: auto;
-    margin-bottom: auto;
+    font-size: 18px;
     
 }
-.social-icon {
-    font-size: 100%;
-    color: #fdfdfd; 
-    padding: 5px;
+ion-icon{
+    font-size: 30px;
+    color:#63a583;; 
+    
     
 }
+.cr-contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:#63a583;
+    font-size: 18px;
+    
+}
+.cr-contact a,
+.cr-contact a:active,
+.cr-contact a:visited
+{
+    color:#63a583;
+}
+.cr-logo{
+    width:25px;
+    height:auto;
+    max-width: 100%;
+    object-fit: contain;
+    border:1px solid #63a583;
+    margin-bottom: 5px;
+}
+p{
+    margin:0;
+}
+ @media (max-width: 650px) {
+    .copy-right{
+        font-size: 2.5vw;
+    }
+    .cr-contact{
+        font-size: 2.5vw;
+    }
+    ion-icon{
+        font-size:3.5vw;
+    }
+  }
+  
+  

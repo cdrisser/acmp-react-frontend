@@ -16,7 +16,7 @@ const location = useLocation()
     return (
     <div className="current-news" >
         
-        {location.pathname !== '/admin' &&<h1>Current News</h1>}
+        {location.pathname !== '/admin' &&<h1>News</h1>}
 
         
         
