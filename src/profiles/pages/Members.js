@@ -33,6 +33,7 @@ const Profiles = (props)=>{
     },[sendRequest]);
     
     useEffect(()=>{
+        console.log("here")
         if(loadedProfiles){
             loadedProfiles.forEach((user)=>{
                 if(user.profileCreator===auth.userId){
@@ -67,8 +68,8 @@ const Profiles = (props)=>{
         <h1>Member Profiles</h1>
         
             <div className='profile-buttons'>
-            <Button  to ="/newprofile" >Create</Button>
-            <Button  to ="/updateprofile" inverse>Update</Button>
+            {!renderUpdateButton?<Button  to ="/newprofile" >Create</Button>:
+            <Button  to ="/updateprofile" inverse>Update</Button>}
             </div>
         {!isLoading && loadedProfiles &&<ProfilesList profiles ={loadedProfiles} delete={props.delete}/>}
     </React.Fragment>
