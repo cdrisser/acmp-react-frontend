@@ -119,7 +119,7 @@ const UpdateProfile = ()=>{
       }
     }
     const showDeleteWarningHandler = () => {
-      console.log('here')
+      
         setShowConfirmModal(true);
       };
     
@@ -186,12 +186,12 @@ const UpdateProfile = ()=>{
                 <Input element="text"  id="email" label="Email" errorText="Please enter your email " onInput={inputHandler} value = {loadProfile.email} valid = {true}  validators={[VALIDATOR_EMAIL()]}/>
                 <Input element="text" type ="url" id="linkedin" label="LinkedIn URL" errorText="Please enter your linkedin URL" onInput={inputHandler} value = {loadProfile.linkedin} valid = {true}  validators={[VALIDATOR_URL()]}/>
                 <ImageUpload id ="image" updateimageUrl ={loadProfile.image} onInput={inputHandler}/>
-                <Input element="textarea" id="elevator" label="Elevator speech" errorText="Please tell us about you!" rows="10" cols="50" onInput={inputHandler} value = {loadProfile.elevator} valid = {true} validators={[VALIDATOR_MINLENGTH(10), VALIDATOR_MAXLENGTH(500)]}/>
+                <Input element="textarea" id="elevator" label="About you" errorText="Please tell us about you!" rows="10" cols="50" onInput={inputHandler} value = {loadProfile.elevator} valid = {true} validators={[VALIDATOR_MINLENGTH(10), VALIDATOR_MAXLENGTH(500)]}/>
                 <div className='button-center'>
                   <Button type = "submit"  disabled = {!formState.isValid}>Update Profile</Button>
-                  <Button danger onClick={showDeleteWarningHandler} >Delete</Button>
                 </div>
-            </form> </div>)}
+            </form> 
+            <Button styleBut={{position:'absolute', top:'5rem',right:'0'}} danger onClick={showDeleteWarningHandler} >Delete</Button></div>)}
     </React.Fragment>
         );
 };

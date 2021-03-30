@@ -14,6 +14,7 @@ const{isLoading, error, sendRequest, clearError } = useHttpClient();
 const [loadedNews, setLoadedNews] = useState();
 
     useEffect(()=>{
+        
         const sendNewsRequest = async ()=>{
             try{
                 const responseData = await sendRequest('http://localhost:5000/api/news/');
@@ -24,7 +25,7 @@ const [loadedNews, setLoadedNews] = useState();
             }
         };
         sendNewsRequest();
-    },[sendRequest])
+    },[sendRequest,props.newsadded])
 
     if(props.admindisplay){
         return(
@@ -49,7 +50,7 @@ const [loadedNews, setLoadedNews] = useState();
                     <LatestNewsList items = {loadedNews} />
                     
                 </div>
-
+    
         
 
 return (

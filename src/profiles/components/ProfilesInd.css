@@ -1,11 +1,12 @@
 .ind-profile{
     display:flex;
     margin:2% auto;
-    background-color:#f1f1f1;
+    background-color:white;
     border-radius: 4px;
     justify-content: flex-start;
     align-items: center;
     width:50%;
+    max-width: 30rem;
     flex-direction: column;
     overflow-y:hidden;
 }
@@ -28,7 +29,7 @@
     height:75%;
     margin:0 1rem;
     font-size: smaller;
-    padding: 1rem ;
+    padding: 5% 15% 1%;
  }
 
 .leftsideprofile a:hover{
@@ -55,6 +56,7 @@
 .profile-name{
     text-align: center;
     font-weight:bold;
+    font-size: 18px;
 }
 .profile-email{
     font-size: .75rem;
@@ -64,10 +66,15 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
 }
 .profile-email a,
 .profile-email:active,
 .profile-email:visited{
-    color:#63a583;
+    color:black;
+    text-decoration: none;
+}
+.social-icon {
+    color:black;
+    text-decoration: none;
 }

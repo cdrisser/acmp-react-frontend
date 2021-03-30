@@ -13,7 +13,7 @@ import SuccessModal from '../../shared/UIElements/SuccessModal'
 const AddNews = (props)=>{
         const auth = useContext(AuthContext);
         const{isLoading, error, sendRequest, clearError } = useHttpClient();
-        const [newProfileSuccess, setNewProfileSuccess]= useState(false);
+        const [newNewsSuccess, setNewNewsSuccess]= useState(false);
       const [formState, inputHandler] = useForm({
         headline:{
             value:'',
@@ -44,7 +44,7 @@ const AddNews = (props)=>{
                 {Authorization: "Bearer " + auth.token,
                 'Content-Type':'application/json'}
                 )
-                setNewProfileSuccess(true);
+                setNewNewsSuccess(true);
             }
             catch(error){
     
@@ -52,14 +52,14 @@ const AddNews = (props)=>{
         };
     
         const clearSuccessListener = ()=>{
-            setNewProfileSuccess(false);
-            history.push('/admin/updatenews')
+            setNewNewsSuccess(false);
+            props.newnews();
         }
         return (
         <React.Fragment>
             {isLoading && <Spinner/>}
             <ErrorModal error={error} onClear ={clearError}/>
-            < SuccessModal showSuccess={newProfileSuccess} onClear ={clearSuccessListener} header='Success!' message='Your news has been successfully uploaded!'/>
+            < SuccessModal showSuccess={newNewsSuccess} onClear ={clearSuccessListener} header='Success!' message='Your news has been successfully uploaded!'/>
             <div className = 'add-news-container'>
                 <h1>Add News</h1>
                 <form  id = 'form' className='form-control' onSubmit={newsInputHandler}>

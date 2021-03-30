@@ -34,11 +34,7 @@ const AddDocToRepo = (props)=>{
 },
 false);
 
-const history = useHistory();
-    
-    
-
-    const profileInputHandler = async event =>{
+    const repoInputHandler = async event =>{
         event.preventDefault();
         
         const formData = new FormData();
@@ -47,8 +43,8 @@ const history = useHistory();
             formData.append("type", radioButtonValue)
             formData.append("file",formState.inputs.file.value)
             
-        
-        try{
+        try
+        {
             await sendRequest('http://localhost:5000/api/repo/',
             'POST', 
             formData,
@@ -63,7 +59,7 @@ const history = useHistory();
 
     const clearSuccessListener = ()=>{
         setNewProfileSuccess(false);
-        history.push('/admin/updaterepo')
+        props.docadded(true)
     }
     const radioButtonListener = (event)=>{
         setRadioButtonValue(event.target.value);
@@ -74,7 +70,7 @@ const history = useHistory();
         {isLoading && <Spinner/>}
         <ErrorModal error={error} onClear ={clearError}/>
         < SuccessModal showSuccess={newProfileSuccess} onClear ={clearSuccessListener} header='Success!' message='Your document has been successfully uploaded!'/>
-        <form id = 'form' className='form-control' onSubmit={profileInputHandler}>
+        <form id = 'form' className='form-control' onSubmit={repoInputHandler}>
 
             <Input element="text" id="repotitle" label="Title" errorText ="Please enter a valid title" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
             <Input element="text" id="repodescription" label="Description" errorText="Please enter a valid description" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>

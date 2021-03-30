@@ -15,7 +15,7 @@ const RepoUpdateContainer = props=>{
 const[currentUpdate, setCurrentUpdate] = useState('');
     
     const updateRepos = ()=>{
-        console.log("here")
+
         setTimeout(()=>{
             setCurrentUpdate('updaterepo');
         },5)

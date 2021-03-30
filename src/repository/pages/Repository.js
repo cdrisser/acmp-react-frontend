@@ -11,13 +11,14 @@ const Repository = (props)=>{
     const [loadedDocs, setLoadedDocs] = useState();
 
     useEffect(()=>{
+        
         const sendAllRepoRequest = async()=>{
             const responseData = await sendRequest('http://localhost:5000/api/repo/alldocs')
             setLoadedDocs(responseData.documents);
         
         }
         sendAllRepoRequest();
-    },[sendRequest])
+    },[sendRequest, props.docadded])
    
     return (
     <React.Fragment>

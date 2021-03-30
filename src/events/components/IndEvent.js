@@ -29,7 +29,7 @@ const IndEvent = props=>{
                     <ion-icon name="calendar-sharp"></ion-icon>                        {props.date}
                     </div>
                     <div className=' icons-event'> 
-                    <ion-icon name="calendar-sharp"></ion-icon>                        ${props.cost}                      
+                    <ion-icon name="card-sharp"></ion-icon>                       ${props.cost}                      
                     </div>
                 </div>
                 <div className='button-center'>

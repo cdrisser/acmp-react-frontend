@@ -48,9 +48,7 @@ const UpdateEvents = props =>{
         )
       }
       const addedEventHandler = (added)=>{
-        console.log(eventAdded)
         setEventAdded(added);
-        console.log(eventAdded)
       }
 
 

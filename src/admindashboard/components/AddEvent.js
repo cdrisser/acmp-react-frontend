@@ -44,7 +44,6 @@ const AddEvent = (props)=>{
             isValid:false
         }
         
-        
     },
     false);
     
@@ -93,7 +92,7 @@ const AddEvent = (props)=>{
                 <Input element="text" id="type" label="Type " errorText="Please enter a valid type" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
                 <Input element="text" id="street" label="Street " errorText="Please enter a valid street" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
                 <Input element="text" id="city_state_zip" label="City State Zip " errorText="Please enter a valid city state and zip" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
-                <Input element="textarea" rows='3' id="description" label="Description " errorText="Please enter a valid description between 45-130" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(45), VALIDATOR_MAXLENGTH(130)]}/>
+                <Input element="text"  id="description" label="Description " errorText="Please enter a valid description between 45-130 characters" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(45), VALIDATOR_MAXLENGTH(130)]}/>
                 <Input element="text" id="cost" label="Cost " errorText="Please enter a valid cost" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
                 <div><label htmlFor="date">Date:</label><input type= "date" id="date" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}></input></div>
                 <div className='button-center'>

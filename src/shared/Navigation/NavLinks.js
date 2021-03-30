@@ -8,26 +8,26 @@ const NavLinks = (props)=>{
     const auth = useContext(AuthContext);
 return <ul className = "nav-links">
             <li>
-                <NavLink to ="/">MEMBER DASH</NavLink>
+                <NavLink to ="/">Dash</NavLink>
             </li>
             {auth.isLoggedIn && !auth.admin &&(
             <li>
-                <NavLink to ="/profiles">PROFILES </NavLink>
+                <NavLink to ="/profiles">Profiles </NavLink>
             </li>)}
             {auth.isLoggedIn && !auth.admin &&(
             <li>
-                <NavLink to ="/repo">REPOSITORY</NavLink>
+                <NavLink to ="/repo">Repository</NavLink>
             </li>)}
             {auth.isLoggedIn && !auth.admin &&(
             <li>
-                <NavLink to ="/events">EVENTS</NavLink>
+                <NavLink to ="/events">Events</NavLink>
             </li>)}
             {auth.admin && <li>
-            <NavLink to ="/admin">ADMIN</NavLink>
+            <NavLink to ="/admin">Admin</NavLink>
             </li>}
             {auth.isLoggedIn &&
             <li>
-                <button onClick={auth.logout}>LOGOUT</button>
+                <button onClick={auth.logout}>Logout</button>
              </li>
             }
 </ul>

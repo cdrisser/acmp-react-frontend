@@ -14,6 +14,7 @@ const UpdateNews = props =>{
     const [showConfirmModal, setShowConfirmModal] = useState(false);
     const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const [idToDelete, setidToDelete] = useState();
+    const [newNewsAdded,setNewNewsAdded] = useState(false);
 
     const showDeleteWarningHandler = (idToDelete) => {
         setidToDelete(idToDelete);
@@ -24,6 +25,10 @@ const UpdateNews = props =>{
       const cancelDeleteHandler = () => {
         setShowConfirmModal(false);
       };
+
+      const newNewsHandler = ()=>{
+        setNewNewsAdded(true);
+      }
     
       const confirmDeleteHandler = async () => {
         setShowConfirmModal(false);
@@ -66,8 +71,8 @@ const UpdateNews = props =>{
         </Modal>
         <ErrorModal error={error} onClear={clearError}/>
         <div className='center'>
-            <MemberDashboard admindisplay delete={showDeleteWarningHandler}/>
-            <AddNews/>
+            <MemberDashboard admindisplay delete={showDeleteWarningHandler} newsadded={newNewsHandler}/>
+            <AddNews newnews={newNewsHandler}/>
             </div>
         </React.Fragment>
     )

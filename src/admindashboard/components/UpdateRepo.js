@@ -15,6 +15,7 @@ const UpdateRepo = props =>{
     const [showConfirmModal, setShowConfirmModal] = useState(false);
     const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const [idToDelete, setidToDelete] = useState();
+    const [docAdded, setDocAdded] = useState(false);
     
     const showDeleteWarningHandler = (idToDelete) => {
         setidToDelete(idToDelete);
@@ -25,7 +26,12 @@ const UpdateRepo = props =>{
       const cancelDeleteHandler = () => {
         setShowConfirmModal(false);
       };
-    
+
+      const docAddedHandler = (update)=>{
+        setDocAdded(update);
+        
+      }
+      
       const confirmDeleteHandler = async () => {
         setShowConfirmModal(false);
         try{
@@ -72,12 +78,12 @@ const UpdateRepo = props =>{
                 <h1>Update Repo</h1>
                 <div>
                     
-                    <Repository delete ={showDeleteWarningHandler}/>
+                    <Repository delete ={showDeleteWarningHandler} docadded={docAddedHandler}/>
                     
                 </div>
                 <div className='doc-upload-container'>
                     <h2>Upload New Doc</h2>
-                    <AddDocToRepo/>
+                    <AddDocToRepo docadded={docAddedHandler}/>
                 </div>
             </div>
     </React.Fragment>

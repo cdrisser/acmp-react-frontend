@@ -19,7 +19,7 @@ const AllUsers = (props)=>{
     const [loadedUsers, setLoadedUsers] = useState();
     const [verifyConfimed, setVerifyConfirmed] = useState(false);
     const [deletedConfirmed, setDeletedConfirmed] = useState(false);
-
+    const [paidConfirmed, setPaidConfirmed] = useState(false);
 
     const showDeleteWarningHandler = (idToDelete) => {
         
@@ -44,7 +44,7 @@ const AllUsers = (props)=>{
         }
         };
         sendAllUserRequest();
-        },[sendRequest, verifyConfimed, deletedConfirmed]);
+        },[sendRequest, verifyConfimed, deletedConfirmed, paidConfirmed]);
        
 
     
@@ -81,14 +81,27 @@ const AllUsers = (props)=>{
               JSON.stringify({verify:verify_unverify}),
               {Authorization: "Bearer " + auth.token, 'Content-Type':'application/json'});
               setVerifyConfirmed(true);
-                
-              
-              
+                   
           }
           catch(error){
   
           }
-    }   
+    }  
+    const markAsPaidListener = async (userID, eventID, paid_unpaid)=>{
+      try{
+          
+          await sendRequest(`http://localhost:5000/api/users/markaspaid/${userID}`,
+            'PATCH',
+            JSON.stringify({paid_unpaid:paid_unpaid, eventID:eventID}),
+            {Authorization: "Bearer " + auth.token, 'Content-Type':'application/json'});
+            setPaidConfirmed(true);    
+        }
+        catch(error){
+
+        }
+        setPaidConfirmed(false);
+
+  }    
       
         const clearSuccessListener = ()=>{
             setVerifyConfirmed(false);
@@ -121,8 +134,9 @@ const AllUsers = (props)=>{
                 <div className="flex-column">
                     <h1>User List</h1>
                 <ul>
-                    {!isLoading && loadedUsers  &&(loadedUsers.map((user)=>{
-                       return <User key={user.id} firstname = {user.firstname} lastname ={user.lastname} id={user.id} verify={user.verify} delete={showDeleteWarningHandler} verifymember={verifyMemberListener}/>
+                    {!isLoading && loadedUsers  &&
+                    (loadedUsers.map((user)=>{
+                       return <User key={user.id} firstname = {user.firstname} lastname ={user.lastname} id={user.id} verify={user.verify} delete={showDeleteWarningHandler} verifymember={verifyMemberListener} events={user.events} markaspaid={markAsPaidListener}/>
                     }))}
                 </ul>
                

@@ -67,9 +67,8 @@ const Profiles = (props)=>{
         <h1>Member Profiles</h1>
         
             <div className='profile-buttons'>
-            <Button  to ="/updateprofile" >Update</Button>
-            
             <Button  to ="/newprofile" >Create</Button>
+            <Button  to ="/updateprofile" inverse>Update</Button>
             </div>
         {!isLoading && loadedProfiles &&<ProfilesList profiles ={loadedProfiles} delete={props.delete}/>}
     </React.Fragment>
