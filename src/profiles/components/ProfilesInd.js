@@ -14,7 +14,7 @@ const ProfileInd = (props)=>{
         
             <div className = "ind-profile">
                 <div className ="topsideprofile">
-                    <img className="profile-pic" src={`http://localhost:5000/${props.image}`} alt ={props.profilename} />
+                    <img className="profile-pic" src={`${process.env.REACT_APP_ASSET_URL}/${props.image}`} alt ={props.profilename} />
                     <div className='right-side-profile-column'>
                         <div className='profile-name'>{`${props.firstname} ${props.lastname}`}</div>
                         <div className='center'>

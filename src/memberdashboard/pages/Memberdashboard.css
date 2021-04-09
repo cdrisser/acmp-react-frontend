@@ -33,6 +33,9 @@ input{
     max-height: max-content;
     width: 100%;
 }
+.current-news h1{
+    color: #63a583;
+}
 .header-photo{
     background:  url('../../../src/images/david-sola-3guU1kCxxy0-unsplash.jpg');
     border-radius: 4px;
@@ -63,12 +66,11 @@ input{
     color:#63a583;
     width:100%;
     text-align:right;
-    padding-right:5px;
-    padding-bottom: 5px;
+    padding:5px;
 }
 .news-background{
     background-color: #f3f2f2;
-    padding-top: 1rem;
+    padding: 1rem 0;
     height:100%;
 }
 /* @media (max-width: 320px) {
@@ -83,6 +85,6 @@ input{
 }
 @media (max-width:1600px){
     .news-background{
-        margin-bottom: 25px;
+        margin: 25px 0;
     }
 }

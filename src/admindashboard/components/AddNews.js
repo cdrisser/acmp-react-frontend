@@ -1,5 +1,4 @@
 import React, {useContext, useState} from 'react'
-import {useHistory} from 'react-router-dom'
 import Input from "../../shared/FormElements/Input"
 import { VALIDATOR_MINLENGTH} from '../../shared/util/validators';
 import {useForm} from '../../shared/hooks/formhook'
@@ -26,16 +25,13 @@ const AddNews = (props)=>{
     },
     false);
     
-    const history = useHistory();
-        
-        
     
         const newsInputHandler = async event =>{
             event.preventDefault();
 
                 
             try{
-                await sendRequest('http://localhost:5000/api/news/',
+                await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/news/`,
                 'POST', 
                 JSON.stringify({
                     headline:formState.inputs.headline.value,
@@ -61,7 +57,7 @@ const AddNews = (props)=>{
             <ErrorModal error={error} onClear ={clearError}/>
             < SuccessModal showSuccess={newNewsSuccess} onClear ={clearSuccessListener} header='Success!' message='Your news has been successfully uploaded!'/>
             <div className = 'add-news-container'>
-                <h1>Add News</h1>
+                <h2>Add News</h2>
                 <form  id = 'form' className='form-control' onSubmit={newsInputHandler}>
                     <Input element="text" id="headline" label="Headline " errorText ="Please enter a valid headline" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
                     <Input element="textarea"  id="newsbody" label="Body " errorText="Please enter a valid body" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>

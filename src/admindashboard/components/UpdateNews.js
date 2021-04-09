@@ -1,4 +1,4 @@
-import React,{useContext, useEffect, useState} from 'react';
+import React,{useContext, useState} from 'react';
 import { useHistory} from 'react-router-dom';
 import ErrorModal from '../../shared/UIElements/ErrorModal';
 import Modal from "../../shared/UIElements/Modal";
@@ -33,7 +33,7 @@ const UpdateNews = props =>{
       const confirmDeleteHandler = async () => {
         setShowConfirmModal(false);
         try{
-          await sendRequest(`http://localhost:5000/api/news/${idToDelete}`,
+          await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/news/${idToDelete}`,
             'DELETE',
             null,
             {Authorization: "Bearer " + auth.token});
@@ -70,7 +70,9 @@ const UpdateNews = props =>{
             </p>
         </Modal>
         <ErrorModal error={error} onClear={clearError}/>
+        <h1>UPDATE NEWS</h1>
         <div className='center'>
+            
             <MemberDashboard admindisplay delete={showDeleteWarningHandler} newsadded={newNewsHandler}/>
             <AddNews newnews={newNewsHandler}/>
             </div>

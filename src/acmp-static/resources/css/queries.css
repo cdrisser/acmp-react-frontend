@@ -1,0 +1,65 @@
+@media only screen and (max-width:1200px){
+    .main-text-box{
+        width: 100%;
+        padding: 0 2%;
+    }
+}
+@media only screen and (max-width:1023px){
+    
+    h1 {font-size:300%;}
+   
+    .contact-form-r {font-size: 13px;}
+    
+}
+
+    
+@media only screen and (max-width: 767px){
+    .event-section .specific-event{
+        display: flex;
+        height: 350px;
+        flex-direction: column;
+        background-color: #ebe9e9;
+        padding: 10px;
+    }
+    h1 {font-size: 250%}
+  
+    .btn:link, .btn:visited{
+    display: inline-block;
+    padding: 10px 20px;
+    font-weight:200;
+    
+}
+}
+
+@media only screen and (max-width: 608px){
+    .main-nav {
+    margin-top: -4px;
+}
+    .commited-to-the-cause{
+        width: 100%;
+    }
+   
+    
+}
+
+@media only screen and (max-width:501px){
+    contact-form-r { height: 400px;}
+    .contact-form-r {
+    padding: 10px;
+    width: 50%;
+    height: 300px;
+}
+    .heading-contact{
+        font-size: 115%;
+
+    }
+    .ind-section{
+        min-width:22rem;
+    }
+}
+    @media only screen and (max-width:400px){
+    .ind-section{
+        min-width:18rem;
+    }
+}
+    

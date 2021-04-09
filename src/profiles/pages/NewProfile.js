@@ -62,7 +62,7 @@ const history = useHistory();
             formData.append("elevator",formState.inputs.elevator.value)
             formData.append("email",formState.inputs.email.value)
         try{
-            await sendRequest('http://localhost:5000/api/profiles/',
+            await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/profiles/`,
             'POST', 
             formData,
             {Authorization: "Bearer " + auth.token}
@@ -84,8 +84,8 @@ const history = useHistory();
         {isLoading && <Spinner/>}
         <ErrorModal error={error} onClear ={clearError}/>
         < SuccessModal showSuccess={newProfileSuccess} onClear ={clearSuccessListener} header='Success' message='Successfully created profile!'/>
-        
-        <form className="form-control " onSubmit={profileInputHandler}>
+        <div className='form-container'>
+        <form className=" form-control-new-profile " onSubmit={profileInputHandler}>
             <h2 className='h2-profile'>Create a profile</h2>
             <Input element="text" id="firstname" label="First Name" errorText ="Please enter a valid first name" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
             <Input element="text" id="lastname" label="Last Name" errorText="Please enter a valid last name" onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(2)]}/>
@@ -97,6 +97,7 @@ const history = useHistory();
                 <Button type = "submit" disabled = {!formState.isValid}>Create Profile</Button>
             </div>
         </form>
+        </div>
     </React.Fragment>)
 } 
 export default NewProfile;

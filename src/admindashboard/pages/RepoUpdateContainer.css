@@ -32,7 +32,10 @@
   }
 
   .radio-buts-repo{
-    margin:.5rem 0;
+    margin:1rem 0 0 0;
+  }
+  .radio-buts-repo button{
+    margin:1rem 0;
   }
   .update-news-container{
     width: 100%;
@@ -41,6 +44,17 @@
     margin:.25rem 2px;
   }
   .add-news-container{
-    width:100%;
-    margin-bottom:.5rem;
+    padding: 2rem;
+    margin: 2rem 5rem;
+    background-color: white;
+    border-radius: 4px;
+    width:50rem;
+  }
+  
+  .add-news-container label{
+    text-align:left !important;
+    
+  }
+  .repo-enter-done h1{
+    color:#63a583;
   }

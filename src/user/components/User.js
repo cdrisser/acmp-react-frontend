@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 
 import Button from '../../shared/FormElements/Button'
 
@@ -19,7 +19,7 @@ const userHasPaidHandler =(eventID,paid)=>{
         <div>{props.email}</div>
         <div className='user-events'>
                 <h3>User's Registered Events</h3>
-                {props.events.map((event)=><div className='user-event-details' key={event.id}><p>{event.eventname}</p>{event.paid ? <a onClick={()=>userHasPaidHandler(event.id,event.paid)}>Remove user as paid</a>:<a onClick={()=>userHasPaidHandler(event.id,event.paid)}>Mark user as paid</a>}</div>)}
+                {props.events.map((event)=><div className='user-event-details' key={event.id}><p>{event.eventname}</p>{event.paid ? <button onClick={()=>userHasPaidHandler(event.id,event.paid)}>Remove user as paid</button>:<button onClick={()=>userHasPaidHandler(event.id,event.paid)}>Mark user as paid</button>}</div>)}
 
         </div>
         <hr className= 'horizline'></hr>

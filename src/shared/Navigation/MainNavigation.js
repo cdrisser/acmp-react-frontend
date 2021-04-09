@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom'
 
 import MainHeader from './MainHeader';
-import NavLink from './NavLinks';
+import NavLinks from './NavLinks';
 import SideDrawer from './SideDrawer';
 import Backdrop from '../UIElements/Backdrop';
 import './MainNavigation.css';
 
-const MainNavigation = (props)=>{
+const MainNavigation = ()=>{
     const [sideDrawerState, setSideDrawerState] = useState(false);
 
     const openDrawerHandler  = ()=>{
@@ -22,7 +22,7 @@ const MainNavigation = (props)=>{
             {sideDrawerState && <Backdrop onClick={closeDrawerHandler}/>}
             <SideDrawer show={sideDrawerState} onClick={closeDrawerHandler}>
                         <nav className="main-navigation_sidedrawer_nav">
-                            <NavLink />
+                            <NavLinks />
                         </nav>
                 </SideDrawer>
             <MainHeader>
@@ -35,7 +35,7 @@ const MainNavigation = (props)=>{
                     <Link to="/MemberDashboard"><img src={require('../../images/ACMP AZ Horizontal Transparent.png')} alt="acmp-logo"></img></Link>
                 </div>
                 <nav className = "main-navigation__header">
-                    <NavLink  />
+                    <NavLinks  />
                 </nav>
             </MainHeader>
         </React.Fragment>

@@ -13,7 +13,7 @@ const Repository = (props)=>{
     useEffect(()=>{
         
         const sendAllRepoRequest = async()=>{
-            const responseData = await sendRequest('http://localhost:5000/api/repo/alldocs')
+            const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/repo/alldocs`)
             setLoadedDocs(responseData.documents);
         
         }
@@ -31,19 +31,19 @@ const Repository = (props)=>{
         {useLocation().pathname !== '/admin' &&<h1>Repository</h1>}
         <div className = 'repo-container'>
          <div className='specific-repo-container'>
-         {useLocation().pathname !== '/admin'&&  <img className='repo-img' src={require('../../images/media-repo.jpg')}></img>}
+         {useLocation().pathname !== '/admin'&&  <img className='repo-img' alt="repo media " src={require('../../images/media-repo.jpg')}></img>}
              <h2>Media</h2>
             {!isLoading && loadedDocs &&  <RepoList repo={loadedDocs.filter(doc=>doc.type==='media')} delete = {props.delete}/>  }
          </div>
          <div className='specific-repo-container'>
        
-         {useLocation().pathname !== '/admin' && <img className='repo-img' src={require('../../images/docs-repo.jpg')}></img>}
+         {useLocation().pathname !== '/admin' && <img className='repo-img' alt="repo docs " src={require('../../images/docs-repo.jpg')}></img>}
          <h2>Docs</h2>
             {!isLoading && loadedDocs && <RepoList repo={loadedDocs.filter(doc=>doc.type==='docs')} delete = {props.delete}/>}
          </div>   
          <div className='specific-repo-container'>
          
-            {useLocation().pathname !== '/admin'&& <img className='repo-img' src={require('../../images/misc-repo.jpg')}></img>}
+            {useLocation().pathname !== '/admin'&& <img className='repo-img' alt="repo misc "src={require('../../images/misc-repo.jpg')}></img>}
          <h2>Misc</h2>
             {!isLoading && loadedDocs && <RepoList repo={loadedDocs.filter(doc=>doc.type==='misc')} delete = {props.delete}/>}
          </div>      

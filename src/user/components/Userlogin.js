@@ -62,7 +62,7 @@ const Userlogin = (props) =>{
         
         if(isLoginMode){
             try{
-            const responseData = await sendRequest('http://localhost:5000/api/users/login',
+            const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/login`,
                 'POST', JSON.stringify({
                     email:formState.inputs.email.value,
                     password:formState.inputs.password.value
@@ -80,7 +80,7 @@ const Userlogin = (props) =>{
         }
         else{
             try{
-                const responseData = await sendRequest('http://localhost:5000/api/users/signup',
+                 await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/signup`,
                 'POST',
                 JSON.stringify({
                     firstname:formState.inputs.firstname.value,
@@ -108,7 +108,7 @@ const Userlogin = (props) =>{
              <SignupModal showSignup ={showSignup} onClear ={showSignupHandler}/>
              
                 
-            <div className = {`${props.style}`}>
+            <div className = {`${props.styletag}`}>
                 
             {!isLoginMode&&<h1>Sign up</h1>}
             

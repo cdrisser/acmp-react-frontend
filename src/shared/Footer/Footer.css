@@ -18,7 +18,7 @@
 }
 .copy-right{
     color: #fff;
-    font-size: 18px;
+   
     
 }
 ion-icon{
@@ -32,7 +32,7 @@ ion-icon{
     flex-direction: column;
     align-items: center;
     color:#63a583;
-    font-size: 18px;
+    
     
 }
 .cr-contact a,
@@ -53,12 +53,8 @@ p{
     margin:0;
 }
  @media (max-width: 650px) {
-    .copy-right{
-        font-size: 2.5vw;
-    }
-    .cr-contact{
-        font-size: 2.5vw;
-    }
+    
+    
     ion-icon{
         font-size:3.5vw;
     }

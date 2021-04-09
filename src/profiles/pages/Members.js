@@ -1,4 +1,4 @@
-import React,{useEffect, useState, useContext,useCallback} from 'react';
+import React,{useEffect, useState, useContext} from 'react';
 import ProfilesList from '../components/ProfilesList';
 import {useHttpClient} from '../../shared/hooks/httphook';
 import {AuthContext} from '../../shared/context/auth-context'
@@ -19,7 +19,7 @@ const Profiles = (props)=>{
     useEffect(()=>{
         const sendAllProfileRequest = async()=>{
         try{
-            const responseData = await sendRequest('http://localhost:5000/api/profiles/all');
+            const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/profiles/all`);
              setLoadedProfiles(responseData.profiles);
               
                 
@@ -65,7 +65,7 @@ const Profiles = (props)=>{
                 <Spinner/>
             </div>
         )}
-        <h1>Member Profiles</h1>
+        <h1 className='members-h1'>Member Profiles</h1>
         
             <div className='profile-buttons'>
             {!renderUpdateButton?<Button  to ="/newprofile" >Create</Button>:

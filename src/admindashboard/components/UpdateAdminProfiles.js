@@ -25,7 +25,7 @@ const UpdateAdminProfile = props =>{
       const confirmDeleteHandler = async () => {
         setShowConfirmModal(false);
         try{
-          await sendRequest(`http://localhost:5000/api/profiles/${idToDelete}`,
+          await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/profiles/${idToDelete}`,
             'DELETE',
             null,
             {Authorization: "Bearer " + auth.token});
@@ -62,7 +62,7 @@ const UpdateAdminProfile = props =>{
             </p>
         </Modal>
         <ErrorModal error={error} onClear={clearError}/>
-        <div ></div>
+        <h1>UPDATE PROFILES</h1>
         <Profiles delete = {showDeleteWarningHandler}/>
         </React.Fragment>
     )

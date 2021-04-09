@@ -17,7 +17,7 @@ const [loadedNews, setLoadedNews] = useState();
         
         const sendNewsRequest = async ()=>{
             try{
-                const responseData = await sendRequest('http://localhost:5000/api/news/');
+                const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/news/`);
                 setLoadedNews(responseData.news);
             }
             catch(error){
@@ -43,7 +43,7 @@ const [loadedNews, setLoadedNews] = useState();
     }
     const loginRender = !auth.isLoggedIn ? 
         <div className="row-flex-container news-background">
-            <LatestNewsList items = {loadedNews} /><UserLogin style='dashboard-login'/></div>:
+            <LatestNewsList items = {loadedNews} /><UserLogin styletag='dashboard-login'/></div>:
             
           <div className="flex-column news-background">
                     

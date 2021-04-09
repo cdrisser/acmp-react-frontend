@@ -8,7 +8,6 @@ import ErrorModal from '../../shared/UIElements/ErrorModal';
 import Spinner from '../../shared/UIElements/Spinner'
 import EventList from '../components/EventList';
 import Modal from '../../shared/UIElements/Modal';
-import {useHistory} from 'react-router-dom';
 
 const Events = (props)=>{
     const{isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -16,11 +15,10 @@ const Events = (props)=>{
     const [eventid,setEventId] = useState();
     const auth = useContext(AuthContext);
     const [showConfirmModal, setShowConfirmModal] = useState(false);
-    const history = useHistory();
     useEffect(()=>{
         const sendAllEventsRequest = async()=>{
         try{
-            const responseData = await sendRequest('http://localhost:5000/api/events/all');
+            const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/events/all`);
              setLoadedEvents(responseData.events);
 
             
@@ -46,7 +44,7 @@ const Events = (props)=>{
         
         
         try{
-            await sendRequest(`http://localhost:5000/api/events/register/${eventid}`,
+            await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/events/register/${eventid}`,
                 'POST',
                 JSON.stringify({id:auth.userId}),
                 {Authorization: "Bearer " + auth.token,

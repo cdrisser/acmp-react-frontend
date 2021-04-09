@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { useHistory} from 'react-router-dom';
 
 import Modal from "../../shared/UIElements/Modal";
@@ -35,7 +35,7 @@ const UpdateRepo = props =>{
       const confirmDeleteHandler = async () => {
         setShowConfirmModal(false);
         try{
-          await sendRequest(`http://localhost:5000/api/repo/${idToDelete}`,
+          await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/repo/${idToDelete}`,
             'DELETE',
             null,
             {Authorization: "Bearer " + auth.token});
@@ -81,9 +81,11 @@ const UpdateRepo = props =>{
                     <Repository delete ={showDeleteWarningHandler} docadded={docAddedHandler}/>
                     
                 </div>
-                <div className='doc-upload-container'>
-                    <h2>Upload New Doc</h2>
-                    <AddDocToRepo docadded={docAddedHandler}/>
+                <div className='center'>
+                  <div className='doc-upload-container'>
+                      <h2>Upload New Doc</h2>
+                      <AddDocToRepo docadded={docAddedHandler}/>
+                  </div>
                 </div>
             </div>
     </React.Fragment>

@@ -32,8 +32,12 @@ h2{
 .repo-title{
     text-align: center;
 }
-.doc-upload-container{
-    padding:2rem 0;
+.doc-upload-container {
+    margin: 2rem;
+    background-color: white;
+    border-radius: 4px;
+    width: 50rem;
+    padding:1rem;
 }
 .update-news-container{
     width:100%;

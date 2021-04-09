@@ -1,5 +1,4 @@
 import React, {useContext, useState} from 'react'
-import {useHistory} from 'react-router-dom'
 import Input from "../../shared/FormElements/Input"
 import { VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH} from '../../shared/util/validators';
 import {useForm} from '../../shared/hooks/formhook'
@@ -38,12 +37,7 @@ const AddEvent = (props)=>{
         cost:{
             value:'',
             isValid:false
-        },
-        cost:{
-            value:'',
-            isValid:false
         }
-        
     },
     false);
     
@@ -62,7 +56,7 @@ const AddEvent = (props)=>{
             })
             
             try{
-                await sendRequest('http://localhost:5000/api/events/',
+                await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/events/`,
                 'POST', 
                 neweventjson,
                 {Authorization: "Bearer " + auth.token,

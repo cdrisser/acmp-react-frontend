@@ -1,5 +1,4 @@
 import React, {useContext, useState} from 'react'
-import {useHistory} from 'react-router-dom'
 
 import Input from "../../shared/FormElements/Input"
 import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE} from '../../shared/util/validators';
@@ -45,7 +44,7 @@ false);
             
         try
         {
-            await sendRequest('http://localhost:5000/api/repo/',
+            await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/repo/`,
             'POST', 
             formData,
             {Authorization: "Bearer " + auth.token}
@@ -79,9 +78,12 @@ false);
             <label htmlFor="media"><input type="radio" id="media" name="type" value="media" onChange={radioButtonListener}/> Media</label>
             <label htmlFor="docs"><input type="radio" id="docs" name="type" value="docs" onChange={radioButtonListener}/> Documents</label>
             <label htmlFor="misc" ><input type="radio" id="misc" name="type" value="misc" defaultChecked onChange={radioButtonListener}/> Miscellaneous</label>
-            </div>
             <DocUpload id ="file" onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]}/>
-            <Button styleBut={{marginTop:'.5rem'}} type = "submit" disabled = {!formState.isValid}>Add</Button>
+            </div>
+            
+            <div className = 'button-center'>
+                <Button styleBut={{marginTop:'.5rem'}} type = "submit" disabled = {!formState.isValid}>Add</Button>
+            </div>
         </form>
     </React.Fragment>)
 } 

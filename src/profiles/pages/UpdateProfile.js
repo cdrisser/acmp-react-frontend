@@ -53,7 +53,7 @@ const UpdateProfile = ()=>{
       const fetchProfile = async ()=>{
         try{
           const responseData = await sendRequest(
-            `http://localhost:5000/api/profiles/${auth.userId}`);
+            `${process.env.REACT_APP_BACKEND_URL}/profiles/${auth.userId}`);
             setLoadedProfile(responseData.profile);
         
             setFormData({
@@ -106,7 +106,7 @@ const UpdateProfile = ()=>{
             formData.append("email",formState.inputs.email.value)
             formData.append("profileCreator",auth.userId)
             
-        await sendRequest(`http://localhost:5000/api/profiles/${auth.userId}`,
+        await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/profiles/${auth.userId}`,
         'PATCH',
         formData,
         {Authorization: "Bearer " + auth.token}
@@ -130,7 +130,7 @@ const UpdateProfile = ()=>{
       const confirmDeleteHandler = async () => {
         setShowConfirmModal(false);
         try{
-          await sendRequest(`http://localhost:5000/api/profiles/${loadProfile.id}`,
+          await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/profiles/${loadProfile.id}`,
             'DELETE',
             null,
             {Authorization: "Bearer " + auth.token});

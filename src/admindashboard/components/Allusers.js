@@ -1,5 +1,4 @@
 import React,{useContext, useState, useEffect} from 'react';
-import { useHistory} from 'react-router-dom';
 
 import SuccessModal from '../../shared/UIElements/SuccessModal'
 import ErrorModal from '../../shared/UIElements/ErrorModal';
@@ -34,7 +33,7 @@ const AllUsers = (props)=>{
       useEffect(()=>{
         const sendAllUserRequest = async ()=>{
         try{
-            const responseData = await sendRequest('http://localhost:5000/api/users/all');
+            const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/all`);
 
             setLoadedUsers(responseData.users);
             
@@ -51,7 +50,7 @@ const AllUsers = (props)=>{
       const confirmDeleteHandler = async () => {
         setShowConfirmModal(false);
         try{
-          await sendRequest(`http://localhost:5000/api/users/${idToDelete}`,
+          await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/${idToDelete}`,
             'DELETE',
             null,
             {Authorization: "Bearer " + auth.token});
@@ -76,7 +75,7 @@ const AllUsers = (props)=>{
         
         try{
             
-            await sendRequest(`http://localhost:5000/api/users/verify/${id}`,
+            await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/verify/${id}`,
               'PATCH',
               JSON.stringify({verify:verify_unverify}),
               {Authorization: "Bearer " + auth.token, 'Content-Type':'application/json'});
@@ -90,7 +89,7 @@ const AllUsers = (props)=>{
     const markAsPaidListener = async (userID, eventID, paid_unpaid)=>{
       try{
           
-          await sendRequest(`http://localhost:5000/api/users/markaspaid/${userID}`,
+          await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/markaspaid/${userID}`,
             'PATCH',
             JSON.stringify({paid_unpaid:paid_unpaid, eventID:eventID}),
             {Authorization: "Bearer " + auth.token, 'Content-Type':'application/json'});

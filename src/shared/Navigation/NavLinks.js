@@ -7,8 +7,13 @@ import './NavLink.css';
 const NavLinks = (props)=>{
     const auth = useContext(AuthContext);
 return <ul className = "nav-links">
+            {!auth.isLoggedIn &&
             <li>
-                <NavLink to ="/">Dash</NavLink>
+                <NavLink to ="/" >Home</NavLink>
+            </li>
+            }
+            <li>
+                <NavLink to ="/members">Dash</NavLink>
             </li>
             {auth.isLoggedIn && !auth.admin &&(
             <li>

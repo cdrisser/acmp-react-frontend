@@ -1,5 +1,4 @@
 import React from 'react'
-import { AuthContext } from '../context/auth-context';
 
 import Button from '../FormElements/Button'
 import Modal from '../UIElements/Modal';

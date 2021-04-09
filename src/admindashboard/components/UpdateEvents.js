@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { useHistory} from 'react-router-dom';
 
 import Modal from "../../shared/UIElements/Modal";
@@ -29,7 +29,7 @@ const UpdateEvents = props =>{
       const confirmDeleteHandler = async () => {
         setShowConfirmModal(false);
         try{
-          await sendRequest(`http://localhost:5000/api/events/${idToDelete}`,
+          await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/events/${idToDelete}`,
             'DELETE',
             null,
             {Authorization: "Bearer " + auth.token});
@@ -71,8 +71,10 @@ const UpdateEvents = props =>{
         </p>
     </Modal>
             <ErrorModal error={error} onClear={clearError}/>
-            <div >
-                <div className='doc-upload-container'>
+            <h1>UPDATE EVENTS</h1>
+            <div className = 'center' >
+              
+                <div>
                     <Events delete ={showDeleteWarningHandler} added={addedEventHandler}  />
                     
                 </div>

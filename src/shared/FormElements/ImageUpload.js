@@ -56,7 +56,7 @@ const pickedImage = (event)=>{
            /> 
             <div className={`${props.center && 'center'}`}>
                 <div className = 'image-picker-center'>
-                    {!previewUrl && props.updateimageUrl && <img className = 'image-preview' src = {`http://localhost:5000/${props.updateimageUrl}`} alt="Preview"/>}
+                    {!previewUrl && props.updateimageUrl && <img className = 'image-preview' src = {`${process.env.REACT_APP_ASSET_URL}/${props.updateimageUrl}`} alt="Preview"/>}
                     {previewUrl && <img className = 'image-preview' src = {previewUrl} alt="Preview"/>}
                     {!previewUrl && !props.updateimageUrl && <p >Please pick an image!</p>}
                     <div>

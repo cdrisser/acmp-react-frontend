@@ -1,5 +1,4 @@
 import React,{useContext} from 'react';
-import {useLocation} from 'react-router-dom';
 import Button from '../../shared/FormElements/Button'
 
 import {AuthContext} from '../../shared/context/auth-context';
@@ -23,7 +22,7 @@ const RepoItem = (props)=>{
             <div className = "info-container">
                 <div className='repo-title'><b>{props.repotitle}</b></div>
                 <div>{props.repodescription}</div>
-                <div><a href= {`http://localhost:5000/${props.file}`} >Download</a></div>
+                <div><a href= {`${process.env.REACT_APP_BACKEND_URL}/${props.file}`} >Download</a></div>
                 
             </div>
         </div>
