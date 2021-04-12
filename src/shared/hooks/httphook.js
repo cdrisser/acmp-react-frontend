@@ -5,7 +5,7 @@ export const useHttpClient = () => {
   const [error, setError] = useState();
 
   const activeHttpRequests = useRef([]);
-
+  console.log("here")
   const sendRequest = useCallback(
     async (url, method = 'GET', body = null, headers = {}) => {
       setIsLoading(true);
@@ -33,7 +33,7 @@ export const useHttpClient = () => {
         setIsLoading(false);
         return responseData;
       } catch (err) {
-        setError(err.message);
+        setError("Sorry.  We couldnt load that resource.  Please try again later.");
         setIsLoading(false);
         throw err;
       }

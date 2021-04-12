@@ -12,8 +12,8 @@ const AcmpIndex = ()=>{
             <h1> ACMP - Arizona Chapter </h1>
             <h2>Moving Change Work Forward</h2>
             <div className = "acmp-index-flex">
-            <a class = "btn" href="getinvolved.html">Join or Volunteer</a>
-            <a class = "btn js-go-to-event" href="#">Current Events</a>
+            <a className ="btn" href="getinvolved.html">Join or Volunteer</a>
+            <a className ="btn js-go-to-event" href="#">Current Events</a>
             </div>
        
     </div>

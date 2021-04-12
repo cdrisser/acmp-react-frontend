@@ -1,13 +1,12 @@
-import React, {useContext, useState} from 'react'
+import React, { useState} from 'react'
 import {useHistory} from 'react-router-dom'
 
 import Input from "../shared/FormElements/Input"
 
-import {VALIDATOR_EMAIL, VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_URL} from '../shared/util/validators';
+import {VALIDATOR_EMAIL, VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH} from '../shared/util/validators';
 import {useForm} from '../shared/hooks/formhook'
 import Button from '../shared/FormElements/Button';
-import {useHttpClient} from '../shared/hooks/httphook'
-import {AuthContext} from '../shared/context/auth-context';
+import {useHttpClient} from '../shared/hooks/httphook';
 import ErrorModal from '../shared/UIElements/ErrorModal';
 import Spinner from '../shared/UIElements/Spinner';
 import SuccessModal from '../shared/UIElements/SuccessModal'
@@ -16,9 +15,8 @@ import Footer from '../shared/Footer/Footer';
 import '../index.css';
 
 const Contact = ()=>{
-        const auth = useContext(AuthContext);
         const{isLoading, error, sendRequest, clearError } = useHttpClient();
-        const [newProfileSuccess, setNewProfileSuccess]= useState(false);
+        const [messageSent, setMessageSent]= useState(false);
       const [formState, inputHandler] = useForm({
         name:{
             value:'',
@@ -38,25 +36,21 @@ const Contact = ()=>{
     
     const history = useHistory();
         
-        
-    
         const contactInputHandler = async event =>{
             event.preventDefault();
             
-            const formData = new FormData();
-            formData.append("firstname",formState.inputs.firstname.value)
-                formData.append("lastname",formState.inputs.lastname.value)
-                formData.append("image",formState.inputs.image.value)
-                formData.append("linkedin",formState.inputs.linkedin.value)
-                formData.append("elevator",formState.inputs.elevator.value)
-                formData.append("email",formState.inputs.email.value)
             try{
-                await sendRequest(`${process.env.REACT_APP_ASSET_URL}/profiles/`,
+            console.log(`${process.env.REACT_APP_BACKEND_URL}/messages/`);
+                await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/messages/`,
                 'POST', 
-                formData,
-                {Authorization: "Bearer " + auth.token}
+                JSON.stringify({
+                    name:formState.inputs.name.value,
+                    email:formState.inputs.email.value,
+                    message:formState.inputs.message.value
+                }),
+                {'Content-Type':'application/json'}
                 )
-                setNewProfileSuccess(true);
+                setMessageSent(true);
             }
             catch(error){
     
@@ -64,14 +58,14 @@ const Contact = ()=>{
         };
     
         const clearSuccessListener = ()=>{
-            setNewProfileSuccess(false);
-            history.push('/')
+            setMessageSent(false);
+            history.push('/contact')
         }
         return (
     <React.Fragment>
         {isLoading && <Spinner/>}
         <ErrorModal error={error} onClear ={clearError}/>
-        < SuccessModal showSuccess={newProfileSuccess} onClear ={clearSuccessListener} header='Recieved' message='Message Recieved! We will contact you within 72 hours'/>
+        < SuccessModal showSuccess={messageSent} onClear ={clearSuccessListener} header='Message Recieved' message='Message Recieved! We will contact you within 72 hours'/>
         <MainNav/>
         <section>
             <p className = "meettheteam-h1">Contact Us</p>
@@ -86,7 +80,7 @@ const Contact = ()=>{
                         <Input element="text"  id="email" placeholder='Email' errorText="Please enter your email " onInput={inputHandler} validators={[VALIDATOR_EMAIL()]}/>
                         <Input element="textarea" rows='4' id="message" placeholder='Message' errorText="Please enter a valid message"  onInput={inputHandler} validators={[VALIDATOR_MINLENGTH(10), VALIDATOR_MAXLENGTH(250)]}/>
                         <div className='button-center'>
-                            <Button type = "submit" disabled = {!formState.isValid}>Create Profile</Button>
+                            <Button type = "submit" disabled = {!formState.isValid}>Submit</Button>
                         </div>
                     </form>
                 </div>
@@ -100,7 +94,7 @@ const Contact = ()=>{
                         </div>
                     </div>
                 <div className = "flex-change">
-                    <a className ="global-button" href="https://www.acmpglobal.org/page/join_acmp" target = "_blank">Go There</a>
+                    <a className ="global-button" href="https://www.acmpglobal.org/page/join_acmp" target = "_blank" rel="noopener noreferrer">Go There</a>
                 </div>
 
 

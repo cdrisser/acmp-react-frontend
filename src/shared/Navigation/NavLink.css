@@ -48,6 +48,7 @@
 @media (min-width:768px){
     .nav-links{
         flex-direction:row;
+        height:0%;
         }
     
     .nav-links button {

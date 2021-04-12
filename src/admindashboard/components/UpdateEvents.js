@@ -58,7 +58,7 @@ const UpdateEvents = props =>{
         show={showConfirmModal}
         onCancel={cancelDeleteHandler}
         header="Are you sure?"
-        footerClass="place-item__modal-actions"
+        footerclassName="place-item__modal-actions"
         footer={
         <React.Fragment>
             <Button inverse onClick = {cancelDeleteHandler}>CANCEL</Button>

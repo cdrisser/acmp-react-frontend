@@ -8,10 +8,6 @@
     text-align:left;
     margin:1rem;
     min-height:300px;
-    
-    
-    
-    
 }
 .event-h2{
     color: #63a583;
@@ -67,4 +63,7 @@ h2{
 }
 .event-address{
     margin-top:.5rem;
+}
+.events-h1{
+    color:#63a583;
 }

@@ -80,6 +80,7 @@ const Userlogin = (props) =>{
         }
         else{
             try{
+                console.log(`${process.env.REACT_APP_BACKEND_URL}/users/signup`);
                  await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/signup`,
                 'POST',
                 JSON.stringify({

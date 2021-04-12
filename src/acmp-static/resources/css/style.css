@@ -26,7 +26,7 @@ section{
 
 
 .main-header-acmp{
-    background-image:  linear-gradient(rgba(34, 34, 34,.3),rgba(34,34,34,0.3)),url(/static/media/dave-herring-62uHdca57wo-unsplash.c5c6efbf.jpg) ;
+    background-image:  linear-gradient(rgba(34, 34, 34,.3),rgba(34,34,34,0.3)),url('../../resources/css/img/dave-herring-62uHdca57wo-unsplash.jpg') ;
     display: flex;
     flex-direction: column;
     justify-content: center;

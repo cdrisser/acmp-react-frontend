@@ -28,8 +28,9 @@ const Repository = (props)=>{
                 <Spinner/>
             </div>
         )}
-        {useLocation().pathname !== '/admin' &&<h1>Repository</h1>}
+        {useLocation().pathname === '/repo' &&<h1 className='repo-h1'>Repository</h1>}
         <div className = 'repo-container'>
+        
          <div className='specific-repo-container'>
          {useLocation().pathname !== '/admin'&&  <img className='repo-img' alt="repo media " src={require('../../images/media-repo.jpg')}></img>}
              <h2>Media</h2>

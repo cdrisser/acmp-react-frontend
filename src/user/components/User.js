@@ -5,7 +5,6 @@ import Button from '../../shared/FormElements/Button'
 import './User.css';
 const User = props =>{
 
-console.log(props);
 const clickHandler=()=>{
     props.verifymember(props.id,!props.verify); 
 }
